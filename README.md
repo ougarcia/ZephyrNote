@@ -2,7 +2,7 @@
 
 [Heroku link][heroku]
 
-[heroku]: ??
+[heroku]: https://clevernote-oscar.herokuapp.com/
 
 ## Minimum Viable Product
 cleverNote is a clone of evernote built on Rails and Backbone. Users can:
