@@ -24,6 +24,8 @@ default: &default
 development:
   <<: *default
   database: oscar-project-proposal_development
+  username: appacademy
+  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -77,9 +79,3 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-#
-production:
-  <<: *default
-  database: oscar-project-proposal_production
-  username: oscar-project-proposal
-  password: <%= ENV['OSCAR-PROJECT-PROPOSAL_DATABASE_PASSWORD'] %>
