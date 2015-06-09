@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       login!(@user)
       redirect_to root_url
     else
+      @user = User.new
       flash.now[:errors] = "Try again!"
       render :new
     end

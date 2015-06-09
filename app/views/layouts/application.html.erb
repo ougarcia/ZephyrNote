@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>OscarProjectProposal</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>cleverNote</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <!--  <%= javascript_include_tag 'application'  %> -->
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if flash[:errors] %>
+  <%= flash[:errors] %>
+<% end %>
 
 <%= yield %>
 
