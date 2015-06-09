@@ -36,8 +36,6 @@ add backbone views for notebook new and show.
 [Details][phase-one]
 
 ### Phase 2: Creating, Viewing, Editing, and Destroying Notes (~1.5 days)
-I will add API routes jbuilder views to serve note data as JSON, then add a
-backbone collection for notes, as well as backbone views for note new, edit,
 and show. The notebook show will also be the notes index. Users will be able to
 sort notes in the notes index.
 
@@ -64,6 +62,7 @@ collection to help me keep track of all the notes that belong to a tag.
 - [ ] Shortcuts
 - [ ] Fancier text editing capabilities
 - [ ] Snippet view in NotesIndex and NotesByTagIndex
+- [ ] Stacks (stacks of notebooks)
 
 
 
