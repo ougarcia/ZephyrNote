@@ -15,7 +15,6 @@
 * users/new.html.erb
 * session/new.html.erb
 * static_pages.root.html.erb
-* notebooks/show.json.jbuilder
 
 ## Backbone
 ### Models
@@ -25,6 +24,7 @@
 * Notebooks
 
 ### Views
+* NotebookIndex
 * NotebookNew
 * NotebookShow
 
