@@ -3,7 +3,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     '': 'startPage',
     'notebooks': 'notebooksIndex',
     'notebooks/new': 'newNotebook',
-    'notebooks/:id': 'showNotebook'
+    'notebooks/:id': 'showNotebook',
+    'notes/:nbid/:id': 'showNote'
   },
 
   initialize: function (options) {
@@ -33,16 +34,22 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
   showNotebook: function (id) {
-    console.log('in show');
     var notebook = this.notebooks.getOrFetch(id);
     var view = new cleverNote.Views.ShowNotebook({ model: notebook });
     this._swapView(view);
-  },  
+  },
+
+  showNote: function(nbid, id) {
+    var notebook = this.notebooks.getOrFetch(nbid);
+    var view = new cleverNote.Views.showNote({ notebook: notebook, noteId: id });
+    this._swapView(view);
+  },
 
 
   _swapView: function(view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
-    this.$rootEl.html(view.render().$el);
+    this.$rootEl.html(view.el);
+    view.render();
   }
 });

@@ -6,7 +6,10 @@ cleverNote.Views.ShowNotebook = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template({ notebook: this.model });
+    var content = this.template({
+      notebook: this.model,
+      notes: this.model.notes()
+    });
     this.$el.html(content);
     return this;
   }

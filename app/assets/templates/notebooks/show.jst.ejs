@@ -1,2 +1,10 @@
 <h1><%= notebook.get('title') %></h1>
-<ul class="notes"></ul>
+<ul class="notes">
+  <% notes.each( function(note) { %>
+    <li>
+      <a href="#/notes/<%= notebook.id %>/<%= note.id %>">
+        <%= note.get('title') %>
+      </a>
+    </li>
+  <% }) %>
+</ul>
