@@ -1,7 +1,8 @@
 module Api
   class NotebooksController < ApplicationController
-    # Prevent CSRF attacks by raising an exception.
-    # For APIs, you may want to use :null_session instead.
+    # probably add a before action to validate that notebook belongs to
+    # user
+    before_action :find_and_validate_notebook, only: [:show, :update, :destroy]
     
     def index
       @notebooks = current_user.notebooks
@@ -9,9 +10,10 @@ module Api
     end
 
     def show
-      @notebook = Notebook.find(params[:id])
-      if @notebook && @notebook.user == current_user
-        render json: @notebook
+      if @notebook
+        render :show
+      else
+        render json: ['Notebook Not Found'], status: 404
       end
     end 
 
@@ -27,7 +29,6 @@ module Api
     end
 
     def update
-      @notebook = Notebook.find(params[:id])
       if @notebook && @notebook.update(notebook_params)
         render json: @notebook
       else
@@ -36,14 +37,20 @@ module Api
     end
 
     def destroy
-      @notebook = Notebook.find(params[:id])
-      @note.destroy
+      @notebook.destroy
       render json: {}
     end
 
     private
     def notebook_params
       params.require(:notebook).permit(:title)
+    end
+
+    def find_and_validate_notebook
+      @notebook = Notebook.find(params[:id])
+      unless @notebook.user == current_user
+        render json: ['Notebook does not belong to current user'], status: 403
+      end
     end
   end
 end

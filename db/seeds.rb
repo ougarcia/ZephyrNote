@@ -6,5 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #
 u1 = User.create!(username: 'oscar', password: 'password')
-Notebook.create!(user: u1, title: 'test-notebook')
+nb1 = Notebook.create!(user: u1, title: 'test-notebook')
 Notebook.create!(user: u1, title: 'another test-notebook')
+Note.create!(
+  title: 'test note title',
+  body: 'test note body',
+  notebook_id: nb1.id
+)
+Note.create!(
+  title: 'another test note',
+  body: 'another test body',
+  notebook_id: nb1.id
+)
