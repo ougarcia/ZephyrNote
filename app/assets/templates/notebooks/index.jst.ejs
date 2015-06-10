@@ -1,5 +1,5 @@
 <ul>
 <% notebooks.each( function(notebook) { %>
-  <li> <%= notebook.get('title') %> </li>
+  <li> <a href="/#notebooks/<%= notebook.get('id') %>"><%= notebook.get('title') %></a> </li>
 <% }) %>
 </ul>

@@ -2,7 +2,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   routes: {
     '': 'startPage',
     'notebooks': 'notebooksIndex',
-    'notebooks/new': 'newNotebook'
+    'notebooks/new': 'newNotebook',
+    'notebooks/:id': 'showNotebook'
   },
 
   initialize: function (options) {
@@ -30,6 +31,13 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     });
     this._swapView(view);
   },
+
+  showNotebook: function (id) {
+    console.log('in show');
+    var notebook = this.notebooks.getOrFetch(id);
+    var view = new cleverNote.Views.ShowNotebook({ model: notebook });
+    this._swapView(view);
+  },  
 
 
   _swapView: function(view) {
