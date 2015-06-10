@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require underscore
 //= require backbone
 //= require jquery.serializejson
+//= require composite_view
 //= require cleverNote
 //= require_tree ../templates
 //= require_tree ./models

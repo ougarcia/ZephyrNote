@@ -5,9 +5,10 @@ window.cleverNote = {
   Routers: {},
 
   initialize: function() {
+    var notebooks = new cleverNote.Collections.Notebooks();
     var router = new cleverNote.Routers.Router({
       $rootEl: $('#content'),
-      notebooks: new cleverNote.Collections.Notebooks()
+      notebooks: notebooks
     });
     Backbone.history.start();
   }

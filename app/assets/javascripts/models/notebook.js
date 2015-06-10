@@ -2,7 +2,9 @@ cleverNote.Models.Notebook = Backbone.Model.extend({
   urlRoot: '/api/notebooks',
 
   notes: function () {
-    this._notes = this._notes || new cleverNote.Collections.Notes();
+    this._notes = this._notes || new cleverNote.Collections.Notes({
+      notebook: this
+    });
     return this._notes;
   },
 

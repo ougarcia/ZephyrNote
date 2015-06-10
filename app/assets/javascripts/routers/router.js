@@ -10,10 +10,13 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.notebooks = options.notebooks;
     this.$rootEl = options.$rootEl;
+    this.rootView = new cleverNote.Views.Root();
+    this.$rootEl.html(this.rootView.render().$el);
   },
 
   startPage: function () {
-    Backbone.history.navigate('notebooks', { trigger: true } );
+    this.notebooksIndex();
+    // this is temporary, i'll add some starter content later
   },
 
   notebooksIndex: function () {
@@ -21,7 +24,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     var view = new cleverNote.Views.NotebooksIndex({
       collection: this.notebooks
     });
-    this._swapView(view);
+    this.rootView.setView(view);
   },
 
   newNotebook: function () {
@@ -30,14 +33,14 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       model: notebook,
       collection: this.notebooks
     });
-    this._swapView(view);
+    this.rootView.setView(view);
   },
 
   showNotebook: function (id) {
     var notebook = this.notebooks.getOrFetch(id);
     var that = this;
-    // maybe replace the success function with a listener that listens
-    // from the sidebar view
+
+    // maybe find a way to make this less ugly
     notebook.fetch({
       success: function () {
         that.notebooks.add(notebook, { merge: true });
@@ -45,20 +48,13 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     });
 
     var view = new cleverNote.Views.ShowNotebook({ model: notebook });
-    this._swapView(view);
+    this.rootView.setView(view);
   },
 
   showNote: function(nbid, id) {
     var notebook = this.notebooks.getOrFetch(nbid);
     var view = new cleverNote.Views.showNote({ notebook: notebook, noteId: id });
-    this._swapView(view);
+    this.rootView.setView(view);
   },
 
-
-  _swapView: function(view) {
-    this._currentView && this._currentView.remove();
-    this._currentView = view;
-    this.$rootEl.html(view.el);
-    view.render();
-  }
 });
