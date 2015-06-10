@@ -18,3 +18,18 @@ Note.create!(
   body: 'another test body',
   notebook_id: nb1.id
 )
+Note.create!(
+  title: 'note three',
+  body: 'another test body',
+  notebook_id: nb1.id
+)
+Note.create!(
+  title: 'note four',
+  body: 'another test body',
+  notebook_id: nb1.id
+)
+Note.create!(
+  title: 'note five',
+  body: 'another test body',
+  notebook_id: nb1.id
+)

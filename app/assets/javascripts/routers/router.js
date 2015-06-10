@@ -35,6 +35,15 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 
   showNotebook: function (id) {
     var notebook = this.notebooks.getOrFetch(id);
+    var that = this;
+    // maybe replace the success function with a listener that listens
+    // from the sidebar view
+    notebook.fetch({
+      success: function () {
+        that.notebooks.add(notebook, { merge: true });
+      }
+    });
+
     var view = new cleverNote.Views.ShowNotebook({ model: notebook });
     this._swapView(view);
   },
