@@ -1,9 +1,9 @@
 module Api
-  class NotebooksController < ApplicationController
+  class NotebooksController < ApiController
     # probably add a before action to validate that notebook belongs to
     # user
     before_action :find_and_validate_notebook, only: [:show, :update, :destroy]
-    
+
     def index
       @notebooks = current_user.notebooks
       render json: @notebooks
@@ -15,7 +15,7 @@ module Api
       else
         render json: ['Notebook Not Found'], status: 404
       end
-    end 
+    end
 
 
     def create

@@ -1,5 +1,5 @@
 module Api
-  class NotesController < ApplicationController
+  class NotesController < ApiController
 
     def create
       @note = Note.new(note_params)
