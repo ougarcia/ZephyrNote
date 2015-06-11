@@ -15,8 +15,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
   startPage: function () {
-    this.notebooksIndex();
-    // this is temporary, i'll add some starter content later
+    var view = new cleverNote.Views.NotesIndex();
+    this.rootView.setView(view);
   },
 
   notebooksIndex: function () {

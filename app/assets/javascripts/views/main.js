@@ -8,6 +8,7 @@ cleverNote.Views.Root = Backbone.View.extend({
 
   initialize: function () {
     this.sidebarView = new cleverNote.Views.Sidebar();
+    this.sidebarView.render();
   },
 
   setView: function (view) {
@@ -20,7 +21,7 @@ cleverNote.Views.Root = Backbone.View.extend({
   render: function () {
     var content = this.template();
     this.$el.html(content);
-    this.$('#sidebar').html(this.sidebarView.render().$el);
+    this.$('#sidebar').html(this.sidebarView.$el);
     return this;
   }
 });
