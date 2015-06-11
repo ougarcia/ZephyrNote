@@ -1,0 +1,25 @@
+<div class="col-md-6 col-md-offset-3">
+  <form>
+
+    <div class="form-group">
+      <label for="note-title">Title</label>
+      <input
+        id="note-title"
+        class="form-control"
+        type="text"
+        name="note[title]"
+        value="<%= note.get('title') %>"
+      >
+      </input>
+    </div>
+
+    <div class="form-group">
+      <label for="note-body">Body</label>
+      <textarea id="note-body" class="form-control" name="note[body]"
+        ><%= note.get('body') %></textarea>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+
+  </form>
+
+</div>
