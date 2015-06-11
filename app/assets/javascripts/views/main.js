@@ -2,7 +2,7 @@ cleverNote.Views.Root = Backbone.View.extend({
   // TODO: this is okay for now, but if I end up using the sidebar for
   // only navigation, I might just want to move this up to the app
   // initialization and handle the other views like normal
-  className: 'row',
+  className: 'row outside',
 
   template: JST['root'],
 

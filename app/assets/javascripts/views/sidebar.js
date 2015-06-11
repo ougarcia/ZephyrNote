@@ -5,15 +5,28 @@ cleverNote.Views.Sidebar = Backbone.View.extend({
   template: JST['sidebar'],
 
   events: {
-    'click #notebooks-button': 'goToNotebooks',
-    'click #home-button': 'goToHome'
+    'click button': 'goTo'
   },
 
   initialize: function (options) {
   },
 
+  goTo: function(event) {
+    var destination;
+    switch($(event.currentTarget).attr('id')) {
+      case 'notebooks-button':
+        destination = 'notebooks';
+        break;
+      case 'home-button':
+        destination = '';
+        break;
+      default:
+        // do nothing
+    }
+    Backbone.history.navigate(destination, {trigger: true});
+  },
 
-  goToNotebooks: function () {
+  goToNotebooks: function (event) {
     console.log($(event.currentTarget).attr('id'));
     Backbone.history.navigate('notebooks', {trigger: true});
   },
