@@ -1,4 +1,4 @@
-cleverNote.Views.NewNotebook = Backbone.View.extend({
+cleverNote.Views.NotebookForm = Backbone.View.extend({
   tagName: 'form',
   template: JST['notebooks/form'],
 
@@ -7,16 +7,14 @@ cleverNote.Views.NewNotebook = Backbone.View.extend({
   },
 
   handleSubmit: function(event) {
-    console.log('hadling submit');
     event.preventDefault();
     var that = this;
     var attrs = this.$el.serializeJSON();
     this.model.set(attrs);
     this.model.save({}, {
       success: function () {
-        console.log('successfuly saved notebook');
         that.collection.add(that.model);
-        Backbone.history.navigate('notebooks', { trigger: true });
+        Backbone.history.navigate('notebooks/' + that.model.id, { trigger: true });
       }
     });
   },

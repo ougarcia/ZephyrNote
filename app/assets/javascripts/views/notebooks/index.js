@@ -1,17 +1,21 @@
-cleverNote.Views.NotebooksIndex = Backbone.View.extend({
+cleverNote.Views.NotebooksIndex = Backbone.CompositeView.extend({
   template: JST['notebooks/index'],
 
   initialize: function () {
-    this.listenTo(this.collection, 'add change:title remove reset', this.render);
+    this.listenTo(this.collection, 'add', this.addItemView);
+    this.collection.each(this.addItemView.bind(this));
+  },
+
+  addItemView: function (item) {
+    var subview = new cleverNote.Views.NotebooksIndexItem({ model: item });
+    this.addSubview('ul', subview);
   },
 
 
   render: function () {
-    // eventually make this a composite view, won't iterate over
-    // notebooks in template, that's sloppy.
-
     var content = this.template({ notebooks: this.collection });
     this.$el.html(content);
+    this.attachSubviews();
     return this;
   }
 });

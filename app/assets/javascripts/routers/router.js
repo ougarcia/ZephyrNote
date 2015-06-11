@@ -3,6 +3,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     '': 'startPage',
     'notebooks': 'notebooksIndex',
     'notebooks/new': 'newNotebook',
+    'notebooks/:id/edit': 'editNotebook',
     'notebooks/:id': 'showNotebook',
     'notes/:nbid/:id': 'showNote'
   },
@@ -29,7 +30,17 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 
   newNotebook: function () {
     var notebook = new cleverNote.Models.Notebook();
-    var view = new cleverNote.Views.NewNotebook({
+    var view = new cleverNote.Views.NotebookForm({
+      model: notebook,
+      collection: this.notebooks
+    });
+    this.rootView.setView(view);
+  },
+
+  editNotebook: function (id) {
+    var notebook = this.notebooks.getOrFetch(id);
+    console.log('hit route');
+    var view = new cleverNote.Views.NotebookForm({
       model: notebook,
       collection: this.notebooks
     });
