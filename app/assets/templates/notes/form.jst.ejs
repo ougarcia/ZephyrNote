@@ -1,6 +1,19 @@
 <div class="col-md-6 col-md-offset-3">
   <form>
 
+    <div class='form-group'>
+      <label for='note-notebook'>Notebook</label>
+      <select id='note-notebook' name='note[notebook_id]' class='form-control'>
+        <% notebooks.each( function(notebook) { %>
+          <option
+          value="<%= notebook.id %>"
+          <% if (notebook.id === note.get('notebook_id')) { %>
+            selected
+          <% } %>
+          ><%= notebook.get('title') %></option>
+        <% }) %>
+      </select>
+    </div>
     <div class="form-group">
       <label for="note-title">Title</label>
       <input

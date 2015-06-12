@@ -12,9 +12,10 @@ cleverNote.Views.NoteForm = Backbone.View.extend({
     } else {
       this.noteId = options.noteId;
     }
-
     this.notebook = options.notebook;
+    this.notebooks = options.notebooks;
     this.listenToOnce(this.notebook, 'sync', this.setModel);
+    this.listenTo(this.notebooks, 'sync', this.render);
   },
 
   setModel: function () {
@@ -26,22 +27,33 @@ cleverNote.Views.NoteForm = Backbone.View.extend({
     event.preventDefault();
     var that = this;
     var attrs = this.$('form').serializeJSON();
-    attrs['note']['notebook_id'] = this.notebook.id;
+    //attrs['note']['notebook_id'] = this.notebook.id;
     this.model.save(attrs, {
       patch: true,
-      success: function() {
-        that.notebook.notes().add(that.model);
-        Backbone.history.navigate(
-          'notebooks/' + that.notebook.id + '/notes/' + that.model.id,
-          { trigger: true }
-        );
+      success: function () {
+        that.submitSuccess();
       }
     });
   },
 
+  submitSuccess: function () {
+    if ( (this.model.get('notebook_id') !== this.notebook.id) ) {
+      this.notebook.notes().remove(this.note);
+      this.notebook = this.notebooks.getOrFetch(this.model.get('notebook_id'));
+    }
+    this.notebook.notes().add(this.model);
+    Backbone.history.navigate(
+      'notebooks/' + this.notebook.id + '/notes/' + this.model.id,
+      { trigger: true }
+    );
+  },
+
   render: function () {
     if (this.model) {
-      var content = this.template({ note: this.model });
+      var content = this.template({
+        note: this.model,
+        notebooks: this.notebooks
+      });
       this.$el.html(content);
     }
     return this;
