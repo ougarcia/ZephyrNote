@@ -10,20 +10,15 @@ cleverNote.Views.NoteForm = Backbone.View.extend({
   // notebook, notes, and tags are syncd
 
   initialize: function (options) {
-    if (options.model) {
-      this.model = options.model;
-    } else {
-      this.noteId = options.noteId;
-    }
     this.notebook = options.notebook;
     this.notebooks = options.notebooks;
-    this.listenToOnce(this.notebook, 'sync', this.setModel);
+    this.listenToOnce(this.notebook, 'sync', this.setModel.bind(this, options));
     this.listenTo(this.notebooks, 'sync', this.render);
     this.notebooks.fetch();
   },
 
-  setModel: function () {
-    this.model = this.model || this.notebook.notes().get(this.noteId);
+  setModel: function (options) {
+    this.model = options.note || this.notebook.notes().get(options.noteId);
     this.render();
   },
 

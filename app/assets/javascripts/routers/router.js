@@ -77,7 +77,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     var notebook = this.notebooks.getOrFetch(nbid);
     var note = new cleverNote.Models.Note();
     var view = new cleverNote.Views.NoteForm({
-      model: note,
+      note: note,
       notebook: notebook,
       notebooks: this.notebooks,
       tags: this.tags
