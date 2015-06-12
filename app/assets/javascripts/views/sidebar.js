@@ -23,20 +23,21 @@ cleverNote.Views.Sidebar = Backbone.View.extend({
       case 'tags-button':
         destination = 'tags';
         break;
+      case 'log-out-button':
+        this.logOut();
+        break;
       default:
         // do nothing
     }
     Backbone.history.navigate(destination, {trigger: true});
   },
 
-  goToNotebooks: function (event) {
-    console.log($(event.currentTarget).attr('id'));
-    Backbone.history.navigate('notebooks', {trigger: true});
-  },
-
-  goToHome: function (event) {
-    console.log($(event.currentTarget).attr('id'));
-    Backbone.history.navigate('', {trigger: true} );
+  logOut: function () {
+    $.ajax({
+      url: "/session",
+      method: "delete",
+    });
+    window.location.replace('session/new');
   },
 
   render: function () {
