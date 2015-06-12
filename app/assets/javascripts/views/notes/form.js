@@ -53,7 +53,8 @@ cleverNote.Views.NoteForm = Backbone.View.extend({
       var content = this.template({
         note: this.model,
         notebooks: this.notebooks,
-        defaultNotebook: this.notebook
+        defaultNotebook: this.notebook,
+        tags: this.tags
       });
       this.$el.html(content);
     }
