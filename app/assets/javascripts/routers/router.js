@@ -105,7 +105,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 // Tags
 //==============================================================================
 
-
   tagsIndex: function () {
     this.tags.fetch();
     var view = new cleverNote.Views.TagsIndex({
@@ -113,7 +112,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     });
     this.rootView.setView(view);
   },
-
 
   showTag: function (id) {
     var tag = this.tags.getOrFetch(id);
@@ -145,6 +143,5 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     });
     this.rootView.setView(view);
   },
-
 
 });
