@@ -20,7 +20,7 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references users)
-label       | string    | not null, unique
+title       | string    | not null, unique
 
 
 Not exactly sure if I want the user_id column or not. I think this denormalizes

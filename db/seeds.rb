@@ -33,3 +33,5 @@ Note.create(
   body: 'another test body',
   notebook_id: nb1.id
 )
+Tag.create(title: "test-tag", user_id: 1)
+Tagging.create(tag_id: 1, note_id: 1)

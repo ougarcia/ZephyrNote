@@ -22,6 +22,5 @@ Tag
 ### Views
 * tagNew
 * tagIndex
-* tagShow
 
 ## Gems/Libraries
