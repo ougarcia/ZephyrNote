@@ -1,2 +1,10 @@
+<!-- maybe add an octothorpe here if parent is a tag -->
+<h1><%= parent.get('title') %></h1>
+<a href="#<%= parent.routesName %>/<%= parent.id %>/edit">Edit</a>
+
 <ul class="notes">
 </ul>
+
+<% if (parent.routesName === 'notebooks') { %>
+  <a href="#notebooks/<%= parent.id %>/notes/new">New Note</a>
+<% } %>

@@ -13,7 +13,7 @@ cleverNote.Views.NotebookForm = Backbone.View.extend({
     this.model.set(attrs);
     this.model.save({}, {
       success: function () {
-        that.collection.add(that.model);
+        that.collection.add(that.model, { merge: true});
         // TODO: do i need a merge: true here?
         Backbone.history.navigate('notebooks/' + that.model.id, { trigger: true });
       }

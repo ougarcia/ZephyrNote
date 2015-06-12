@@ -18,7 +18,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
   startPage: function () {
-    var view = new cleverNote.Views.NotesIndex();
+    var view = new cleverNote.Views.allNotesIndex();
     this.rootView.setView(view);
   },
 
@@ -59,7 +59,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       success: that.notebooks.add.bind(notebook, { merge: true })
     });
 
-    var view = new cleverNote.Views.ShowNotebook({ model: notebook });
+    var view = new cleverNote.Views.NotesIndex({ model: notebook });
     this.rootView.setView(view);
   },
 
