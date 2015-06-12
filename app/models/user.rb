@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   validates :username, :password_digest, :session_token, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :username, uniqueness: true
-  has_many :notebooks
-  has_many :tags
+  has_many :notebooks, dependent: :destroy
+  has_many :tags, dependent: :destroy
   has_many :notes, through: :notebooks, source: :notes
   after_initialize :ensure_session_token
 
