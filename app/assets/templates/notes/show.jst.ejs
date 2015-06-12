@@ -1,5 +1,11 @@
-<h4><%= note.get('title') %></h4>
-<p><%= note.get('body') %></p>
+<div>
+  <h4><%= note.get('title') %></h4>
+  <p><%= note.get('body') %></p>
+</div>
+<div>
+  <p>Notebook: <%= notebook.get('title') %></p>
+  <p>Tags: <%= note.tags().map(function(tag) { return tag.get('title'); }) %></p>
+</div>
 <a href="#notebooks/<%= notebook.id %>/notes/<%= note.id %>/edit">Edit Note</a>
 <br>
 <a href="#notebooks/<%= notebook.id %>">Back</a>
