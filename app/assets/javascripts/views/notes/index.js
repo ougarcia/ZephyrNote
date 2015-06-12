@@ -3,10 +3,9 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.collection = this.model.notes();
-    //this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addItemView);
     this.listenTo(this.collection, 'remove', this.removeItemView);
-    //console.log(this.collection);
     this.collection.each(this.addItemView.bind(this));
   },
 
