@@ -20,6 +20,9 @@ cleverNote.Views.Sidebar = Backbone.View.extend({
       case 'home-button':
         destination = '';
         break;
+      case 'tags-button':
+        destination = 'tags';
+        break;
       default:
         // do nothing
     }

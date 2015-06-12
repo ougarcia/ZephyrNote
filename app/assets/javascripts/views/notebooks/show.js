@@ -1,5 +1,6 @@
 cleverNote.Views.ShowNotebook = Backbone.View.extend({
   template: JST['notebooks/show'],
+  // i think this is deprecated
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);

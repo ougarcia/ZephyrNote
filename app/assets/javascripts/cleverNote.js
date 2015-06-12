@@ -6,9 +6,11 @@ window.cleverNote = {
 
   initialize: function() {
     var notebooks = new cleverNote.Collections.Notebooks();
+    var tags = new cleverNote.Collections.Tags();
     var router = new cleverNote.Routers.Router({
       $rootEl: $('#content'),
-      notebooks: notebooks
+      notebooks: notebooks,
+      tags: tags
     });
     Backbone.history.start();
   }

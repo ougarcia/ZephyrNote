@@ -8,10 +8,12 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     'notebooks/new': 'newNotebook',
     'notebooks/:id/edit': 'editNotebook',
     'notebooks/:id': 'showNotebook',
+    'tags': 'tagsIndex'
   },
 
   initialize: function (options) {
     this.notebooks = options.notebooks;
+    this.tags = options.tags;
     this.$rootEl = options.$rootEl;
     this.rootView = new cleverNote.Views.Root();
     this.$rootEl.html(this.rootView.render().$el);
@@ -87,4 +89,24 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     var view = new cleverNote.Views.showNote({ notebook: notebook, noteId: id });
     this.rootView.setView(view);
   },
+// Tags
+//==============================================================================
+
+
+
+  tagsIndex: function () {
+    this.tags.fetch();
+    var view = new cleverNote.Views.TagsIndex({
+      collection: this.tags
+    });
+    this.rootView.setView(view);
+  }
+
+
+
+
+
+
+
+
 });
