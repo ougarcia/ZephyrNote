@@ -8,7 +8,10 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     'notebooks/new': 'newNotebook',
     'notebooks/:id/edit': 'editNotebook',
     'notebooks/:id': 'showNotebook',
-    'tags': 'tagsIndex'
+    'tags': 'tagsIndex',
+    'tags/new': 'newTag',
+    'tags/:id/edit': 'editTag',
+    'tags/:id': 'showTag'
   },
 
   initialize: function (options) {
@@ -57,6 +60,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     var notebook = this.notebooks.getOrFetch(id);
     var that = this;
 
+    // TODO: I think this line is wrong, but right now everything
+    // works??
     notebook.fetch({
       success: that.notebooks.add.bind(notebook, { merge: true })
     });
@@ -100,13 +105,39 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       collection: this.tags
     });
     this.rootView.setView(view);
-  }
+  },
 
 
+  showTag: function (id) {
+    var tag = this.tags.getOrFetch(id);
+    var that = this;
 
+    tag.fetch({
+      success: that.tags.add.bind(tag, { merge: true })
+    });
 
+    var view = new cleverNote.Views.NotesIndex({ model: tag });
+    this.rootView.setView(view);
+  },
 
+  editTag: function (id) {
+    console.log('in edit tag route');
+    var tag = this.tags.getOrFetch(id);
+    var view = new cleverNote.Views.TagForm({
+      model: tag,
+      collection: this.tags
+    });
+    this.rootView.setView(view);
+  },
 
+  newTag: function () {
+    var tag = new cleverNote.Models.Tag();
+    var view = new cleverNote.Views.TagForm({
+      model: tag,
+      collection: this.tags
+    });
+    this.rootView.setView(view);
+  },
 
 
 });

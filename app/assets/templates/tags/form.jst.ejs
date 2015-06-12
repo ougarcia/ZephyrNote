@@ -1,0 +1,11 @@
+<h1>
+  <%= tag.isNew() ? "Create Tag" : "Edit Tag" %>
+</h1>
+<label for="tag-title">Title</label>
+  <input
+    type="text"
+    id="tag-title"
+    name="tag[title]"
+    value="<%= tag.get('title') %>">
+  </input>
+<input type="submit" value="submit">
