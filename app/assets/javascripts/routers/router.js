@@ -74,11 +74,10 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 //==============================================================================
 
   newNote: function (nbid) {
-    var notebook = this.notebooks.getOrFetch(nbid);
     var note = new cleverNote.Models.Note();
     var view = new cleverNote.Views.NoteForm({
       note: note,
-      notebook: notebook,
+      notebookId: nbid,
       notebooks: this.notebooks,
       tags: this.tags
     });
@@ -86,11 +85,10 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
   editNote: function (nbid, id) {
-    var notebook = this.notebooks.getOrFetch(nbid);
     var view = new cleverNote.Views.NoteForm({
-      notebooks: this.notebooks,
-      notebook: notebook,
       noteId: id,
+      notebookId: nbid,
+      notebooks: this.notebooks,
       tags: this.tags
     });
     this.rootView.setView(view);

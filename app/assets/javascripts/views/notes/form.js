@@ -6,17 +6,19 @@ cleverNote.Views.NoteForm = Backbone.View.extend({
     'click button': 'handleSubmit'
   },
 
-  // use somthing like a closure or currying so that I only render when
-  // notebook, notes, and tags are syncd
-
   initialize: function (options) {
-    this.notebook = options.notebook;
     this.notebooks = options.notebooks;
-    this.listenToOnce(this.notebook, 'sync', this.setModel.bind(this, options));
-    this.listenTo(this.notebooks, 'sync', this.render);
+    this.tags = options.tags;
+    this.notebook = this.notebooks.getOrFetch(
+      options.notebookId,
+      this.setModel.bind(this, options)
+    );
     this.notebooks.fetch();
+    this.tags.fetch();
+    this.listenTo(this.notebooks, 'sync', this.render);
+    this.listenTo(this.tags, 'sync', this.render);
   },
-
+  
   setModel: function (options) {
     this.model = options.note || this.notebook.notes().get(options.noteId);
     this.render();
