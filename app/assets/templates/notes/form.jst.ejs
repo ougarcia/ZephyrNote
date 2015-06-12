@@ -21,7 +21,11 @@
     <div class='checkbox' id="tag-boxes">
       <% tags.each( function(tag) { %>
         <label class="checkbox-inline"
-          ><input type="checkbox" name="note[tag_ids][]" value="<%= tag.id %>"
+          ><input
+            type="checkbox"
+            name="note[tag_ids][]"
+            value="<%= tag.id %>"
+            <% if (tagIds.indexOf(tag.id) !== -1 ) { %> checked <% } %>
           ><%= tag.get('title') %></label>
       <% }) %>
     </div>

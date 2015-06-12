@@ -21,3 +21,5 @@ for notebooks and how to get the url for the note address.
 I think I have notebook_id on the notes mode, so that might solve the
 last problem
 
+there's a bug in tag show
+title doesn't render on refresh

@@ -50,11 +50,15 @@ cleverNote.Views.NoteForm = Backbone.View.extend({
 
   render: function () {
     if (this.model) {
+      var tagIds = this.model.tags().map( function(tag) {
+        return tag.id;
+      });
       var content = this.template({
         note: this.model,
         notebooks: this.notebooks,
         defaultNotebook: this.notebook,
-        tags: this.tags
+        tags: this.tags,
+        tagIds: tagIds
       });
       this.$el.html(content);
     }
