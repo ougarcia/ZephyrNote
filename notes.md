@@ -13,3 +13,4 @@ way more control.
 
 gotta find an alternative to horizontal rules in my sidebar
 
+create a mixin (_.extend) for my notebooks and tags
