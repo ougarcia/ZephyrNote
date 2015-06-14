@@ -1,6 +1,4 @@
-cleverNote.Models.Tag = Backbone.Model.extend(
-  _.extend({}, cleverNote.Models.noteContainer, {
+cleverNote.Models.Tag = cleverNote.Models.noteContainer.extend({
     urlRoot: '/api/tags',
-    routesName: 'tags',
-  })
-);
+    routesName: 'tags'
+});

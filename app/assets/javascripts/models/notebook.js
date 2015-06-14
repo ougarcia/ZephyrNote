@@ -1,6 +1,4 @@
-cleverNote.Models.Notebook = Backbone.Model.extend(
-  _.extend({}, cleverNote.Models.noteContainer, {
+cleverNote.Models.Notebook = cleverNote.Models.noteContainer.extend({
     urlRoot: '/api/notebooks',
-    routesName: 'notebooks',
-  })
-);
+    routesName: 'notebooks'
+});
