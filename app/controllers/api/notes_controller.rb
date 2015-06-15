@@ -5,6 +5,11 @@ module Api
     #   tags association
     wrap_parameters :note, include: [:tag_ids, :title, :body, :notebook_id]
 
+    def index
+      @notes = current_user.notes
+      render json: @notes
+    end
+
     def create
       @note = Note.new(note_params)
       if @note.save
