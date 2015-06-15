@@ -9,3 +9,14 @@ end
     FactoryGirl.create(:note, notebook_id: nb_id)
   end
 end
+
+
+
+10.times do
+begin
+  FactoryGirl.create(:tag, user: u1);
+  rescue
+    retry
+end
+end
+

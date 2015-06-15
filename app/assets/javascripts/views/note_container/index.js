@@ -8,7 +8,12 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
   },
 
   addItemView: function (item) {
-    var subview = new cleverNote.Views.TagsIndexItem({ model: item });
+    var subview;
+    if (item.routesName === 'notebooks') {
+      subview = new cleverNote.Views.NotebooksIndexItem({ model: item });
+    } else {
+      subview = new cleverNote.Views.TagsIndexItem({ model: item });
+    }
     this.addSubview(this.subviewSelector, subview);
   },
 
