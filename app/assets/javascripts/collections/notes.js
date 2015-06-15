@@ -9,7 +9,6 @@ cleverNote.Collections.Notes = Backbone.Collection.extend({
   },
 
   parse: function(response) {
-    console.log(response.page);
     if (response.page) {
       this.page = parseInt(response.page);
       this.totalPages = parseInt(response.total_pages);
