@@ -30,7 +30,6 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
 
   nextPage: function () {
     var that = this;
-    console.log(this.collection.length);
     if ($(window).scrollTop() > $(document).height() - $(window).height() -40) {
       if (that.collection.page < that.collection.totalPages) {
         that.collection.fetch({
