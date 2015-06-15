@@ -1,4 +1,4 @@
-cleverNote.Views.NoteForm = Backbone.View.extend({
+cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
   className: 'row',
   template: JST['notes/form'],
 
@@ -21,15 +21,36 @@ cleverNote.Views.NoteForm = Backbone.View.extend({
   
   setModel: function (options) {
     this.model = options.note || this.notebook.notes().get(options.noteId);
+    this.tagIds = this.model.tags().map( function(tag) {
+      return tag.id;
+    });
+    this.addTagsSubview();
+    this.addNotebooksSubview();
     this.render();
+  },
+
+  addNotebooksSubview: function () {
+    var subview = new cleverNote.Views.NoteFormNotebooks({
+      collection: this.notebooks,
+      model: this.notebook
+    });
+    this.addSubview('#notebooks-form', subview);
+  },
+
+  addTagsSubview: function () {
+    var subview = new cleverNote.Views.NoteFormTags({
+      collection: this.tags,
+      tagIds: this.tagIds
+    });
+    this.addSubview('#tags-form', subview);
   },
 
   handleSubmit: function (event) {
     event.preventDefault();
     var that = this;
     var attrs = this.$('form').serializeJSON();
-    this.model.save(attrs, {
-      patch: true,
+    this.model.set(attrs);
+    this.model.save({}, {
       success: function () {
         that.submitSuccess();
       }
@@ -50,17 +71,16 @@ cleverNote.Views.NoteForm = Backbone.View.extend({
 
   render: function () {
     if (this.model) {
-      var tagIds = this.model.tags().map( function(tag) {
-        return tag.id;
-      });
+      // gotta keep this from repeating
       var content = this.template({
         note: this.model,
         notebooks: this.notebooks,
         defaultNotebook: this.notebook,
         tags: this.tags,
-        tagIds: tagIds
+        tagIds: this.tagIds
       });
       this.$el.html(content);
+      this.attachSubviews();
     }
     return this;
   }
