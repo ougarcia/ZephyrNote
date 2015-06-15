@@ -15,8 +15,6 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     );
     this.notebooks.fetch();
     this.tags.fetch();
-    this.listenTo(this.notebooks, 'sync', this.render);
-    this.listenTo(this.tags, 'sync', this.render);
   },
   
   setModel: function (options) {
@@ -71,14 +69,7 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
 
   render: function () {
     if (this.model) {
-      // gotta keep this from repeating
-      var content = this.template({
-        note: this.model,
-        notebooks: this.notebooks,
-        defaultNotebook: this.notebook,
-        tags: this.tags,
-        tagIds: this.tagIds
-      });
+      var content = this.template({ note: this.model });
       this.$el.html(content);
       this.attachSubviews();
     }

@@ -3,7 +3,7 @@ cleverNote.Views.NoteFormNotebooks = Backbone.View.extend({
   template: JST['notes/form/notebooks'],
 
   initialize: function () {
-    this.listenTo(this.collection, 'sync add', this.render);
+    this.listenTo(this.collection, 'sync', this.render);
   },
 
   render: function () {
