@@ -18,14 +18,16 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     this.notebooks = options.notebooks;
     this.tags = options.tags;
     this.$rootEl = options.$rootEl;
-    this.rootView = new cleverNote.Views.Root();
-    this.$rootEl.html(this.rootView.render().$el);
+    this.setSidebar();
+    //this.rootView = new cleverNote.Views.Root();
+    //this.$rootEl.html(this.rootView.render().$el);
   },
 
   startPage: function () {
     var notes = new cleverNote.Collections.Notes();
     var view = new cleverNote.Views.allNotesIndex({ collection: notes });
-    this.rootView.setView(view);
+    this._swapView(view);
+    //this.rootView.setView(view);
   },
 
 // Notebooks
@@ -36,7 +38,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     var view = new cleverNote.Views.NotebooksIndex({
       collection: this.notebooks
     });
-    this.rootView.setView(view);
+    //this.rootView.setView(view);
+    this._swapView(view);
   },
 
   newNotebook: function () {
@@ -45,7 +48,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       model: notebook,
       collection: this.notebooks
     });
-    this.rootView.setView(view);
+    //this.rootView.setView(view);
+    this._swapView(view);
   },
 
   editNotebook: function (id) {
@@ -54,7 +58,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       model: notebook,
       collection: this.notebooks
     });
-    this.rootView.setView(view);
+    //this.rootView.setView(view);
+    this._swapView(view);
   },
 
   showNotebook: function (id) {
@@ -68,7 +73,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     });
 
     var view = new cleverNote.Views.NotesIndex({ model: notebook });
-    this.rootView.setView(view);
+    //this.rootView.setView(view);
+    this._swapView(view);
   },
 
 // Notes
@@ -82,7 +88,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       notebooks: this.notebooks,
       tags: this.tags
     });
-    this.rootView.setView(view);
+    //this.rootView.setView(view);
+    this._swapView(view);
   },
 
   editNote: function (nbid, id) {
@@ -92,7 +99,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       notebooks: this.notebooks,
       tags: this.tags
     });
-    this.rootView.setView(view);
+    //this.rootView.setView(view);
+    this._swapView(view);
   },
 
   showNote: function(nbid, id) {
@@ -101,7 +109,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       notebook: notebook,
       noteId: id
     });
-    this.rootView.setView(view);
+    //this.rootView.setView(view);
+    this._swapView(view);
   },
 // Tags
 //==============================================================================
@@ -111,7 +120,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     var view = new cleverNote.Views.TagsIndex({
       collection: this.tags
     });
-    this.rootView.setView(view);
+    //this.rootView.setView(view);
+    this._swapView(view);
   },
 
   showTag: function (id) {
@@ -123,7 +133,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     });
 
     var view = new cleverNote.Views.NotesIndex({ model: tag });
-    this.rootView.setView(view);
+    //this.rootView.setView(view);
+    this._swapView(view);
   },
 
   editTag: function (id) {
@@ -133,7 +144,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       model: tag,
       collection: this.tags
     });
-    this.rootView.setView(view);
+    //this.rootView.setView(view);
+    this._swapView(view);
   },
 
   newTag: function () {
@@ -142,7 +154,22 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       model: tag,
       collection: this.tags
     });
-    this.rootView.setView(view);
+    //this.rootView.setView(view);
+    this._swapView(view);
   },
+
+// Bonus
+//==============================================================================
+
+  setSidebar: function () {
+    var view = new cleverNote.Views.Sidebar();
+    $('#sidebar').html(view.render().$el);
+  },
+
+  _swapView: function(view) {
+    this._currentView && this._currentView.remove();
+    this._currentView = view;
+    this.$rootEl.html(view.render().$el);
+  }
 
 });

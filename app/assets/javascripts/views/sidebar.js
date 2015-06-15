@@ -1,7 +1,5 @@
 cleverNote.Views.Sidebar = Backbone.View.extend({
   className: 'text-center',
-  //remove bg-danger class eventually, this is just so i can keep track
-  //of the sidebar for now
   template: JST['sidebar'],
 
   events: {
