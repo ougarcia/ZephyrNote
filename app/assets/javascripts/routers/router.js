@@ -24,7 +24,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 
   startPage: function () {
     var notes = new cleverNote.Collections.Notes();
-    notes.fetch();
     var view = new cleverNote.Views.allNotesIndex({ collection: notes });
     this.rootView.setView(view);
   },

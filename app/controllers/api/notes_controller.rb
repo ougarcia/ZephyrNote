@@ -6,8 +6,12 @@ module Api
     wrap_parameters :note, include: [:tag_ids, :title, :body, :notebook_id]
 
     def index
-      @notes = current_user.notes
-      render json: @notes
+      @notes = current_user.notes.page(params[:page])
+      render json: {
+        models: @notes,
+        page: params[:page],
+        total_pages: @notes.total_pages
+      }
     end
 
     def create

@@ -1,9 +1,7 @@
 cleverNote.Models.noteContainer = Backbone.Model.extend({
 
   notes: function () {
-    this._notes = this._notes || new cleverNote.Collections.Notes({
-      tag: this
-    });
+    this._notes = this._notes || new cleverNote.Collections.Notes({ tag: this });
     return this._notes;
   },
 
