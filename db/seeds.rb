@@ -1,37 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#
 u1 = User.create(username: 'oscar', password: 'password')
-nb1 = Notebook.create(user: u1, title: 'test-notebook')
-Notebook.create(user: u1, title: 'another test-notebook')
-Note.create(
-  title: 'test note title',
-  body: 'test note body',
-  notebook_id: nb1.id
-)
-Note.create(
-  title: 'another test note',
-  body: 'another test body',
-  notebook_id: nb1.id
-)
-Note.create(
-  title: 'note three',
-  body: 'another test body',
-  notebook_id: nb1.id
-)
-Note.create(
-  title: 'note four',
-  body: 'another test body',
-  notebook_id: nb1.id
-)
-Note.create(
-  title: 'note five',
-  body: 'another test body',
-  notebook_id: nb1.id
-)
-Tag.create(title: "test-tag", user_id: 1)
-Tagging.create(tag_id: 1, note_id: 1)
+10.times do 
+  FactoryGirl.create(:notebook, user: u1)
+end
+
+
+(1..10).each do |nb_id|
+  10.times do
+    FactoryGirl.create(:note, notebook_id: nb_id)
+  end
+end
