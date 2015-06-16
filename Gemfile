@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'newrelic_rpm'
 gem 'backbone-on-rails'
 gem 'kaminari'
+gem 'tagmanager-rails'
 
 # gem 'rails_12factor'
 

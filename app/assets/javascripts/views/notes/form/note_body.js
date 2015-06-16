@@ -20,7 +20,7 @@ cleverNote.Views.NoteFormBody = Backbone.View.extend({
       theme: 'snow'
     });
     this._editor.setHTML(this.model.get('body'));
-    this.$('.ql-editor').addClass('form-control');
+    this.$('#full-editor').addClass('form-control');
   },
 
   render: function () {

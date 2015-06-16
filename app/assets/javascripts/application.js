@@ -18,6 +18,7 @@
 //= require jquery.serializejson
 //= require composite_view
 //= require quill
+//= require tagmanager
 //= require cleverNote
 //= require_tree ../templates
 //= require_tree ./models

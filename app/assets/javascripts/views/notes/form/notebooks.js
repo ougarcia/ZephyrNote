@@ -1,19 +1,17 @@
-cleverNote.Views.NoteFormTags = Backbone.View.extend({
+cleverNote.Views.NoteFormNotebooks = Backbone.View.extend({
   className: 'form-group',
-  template: JST['notes/form/tags'],
+  template: JST['notes/form/notebooks'],
 
-  initialize: function (options) {
-    this.tagIds = options.tagIds;
+  initialize: function () {
     this.listenTo(this.collection, 'sync', this.render);
   },
 
   render: function () {
     var content = this.template({
-      tags: this.collection,
-      tagIds: this.tagIds
+      notebooks: this.collection,
+      defaultNotebook: this.model
     });
     this.$el.html(content);
     return this;
   }
-
 });

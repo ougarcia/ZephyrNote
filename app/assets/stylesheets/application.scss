@@ -12,6 +12,7 @@
  *= require_self
  *= require quill.snow
  *= require_tree .
+ *= require tagmanager
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
