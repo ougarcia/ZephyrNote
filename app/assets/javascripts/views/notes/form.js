@@ -3,7 +3,7 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
   template: JST['notes/form'],
 
   events: {
-    'click button': 'handleSubmit'
+    'click .submit': 'handleSubmit'
   },
 
   initialize: function (options) {
@@ -24,6 +24,7 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     });
     this.addTagsSubview();
     this.addNotebooksSubview();
+    this.addNoteBodySubview();
     this.render();
   },
 
@@ -41,6 +42,11 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
       tagIds: this.tagIds
     });
     this.addSubview('#tags-form', subview);
+  },
+
+  addNoteBodySubview: function () {
+    var subview = new cleverNote.Views.NoteFormBody({ model: this.model });
+    this.addSubview('#note-body-form', subview);
   },
 
   handleSubmit: function (event) {

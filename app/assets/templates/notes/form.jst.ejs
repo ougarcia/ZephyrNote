@@ -1,5 +1,5 @@
 <div class="col-md-6 col-md-offset-3">
-  <h1><%= note.isNew() ? "Edit" : "New" %>Note</h1>
+  <h1><%= note.isNew() ? "New" : "Edit" %>Note</h1>
   <form>
 
     <div id="notebooks-form">
@@ -20,13 +20,11 @@
       </input>
     </div>
 
-    <div class="form-group">
-      <label for="note-body">Body</label>
-      <textarea id="note-body" class="form-control" name="note[body]"
-        ><%= note.get('body') %></textarea>
-      <button type="submit" class="btn btn-default">Submit</button>
+    <div id="note-body-form">
     </div>
 
   </form>
+
+  
 </div>
 <!-- eventuallly add a cancel button -->
