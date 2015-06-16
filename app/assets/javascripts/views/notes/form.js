@@ -54,7 +54,6 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     var that = this;
     var attrs = this.$('form').serializeJSON();
     attrs['note']['body'] = this.noteBodySubview._editor.getHTML();
-    debugger;
     this.model.set(attrs);
     this.model.save({}, {
       success: function () {

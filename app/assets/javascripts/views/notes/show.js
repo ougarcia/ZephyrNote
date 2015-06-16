@@ -1,5 +1,6 @@
 cleverNote.Views.showNote = Backbone.View.extend({
   template: JST['notes/show'],
+  className: "row",
   // don't have an api/notes/:id, so we have to fetch the notebook before
   // we can display the notes
 
