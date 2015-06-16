@@ -1,4 +1,4 @@
 cleverNote.Views.NotebooksIndex = cleverNote.Views.noteContainerIndex.extend({
   template: JST['notebooks/index'],
-  subviewSelector: 'ul',
+  subviewSelector: '.container-list',
 });

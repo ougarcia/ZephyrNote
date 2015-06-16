@@ -1,0 +1,36 @@
+.container-index {
+  width: 50%;
+  margin: auto;
+}
+
+.container-header {
+  color: #fff;
+  background-color: #393D41;
+  text-align: center;
+}
+
+.container-header h1 {
+  display: inline-block;
+}
+
+.container-list-item {
+  height: 50px;
+  border-bottom: 1px solid #ECECEC;
+}
+
+.container-list-item a {
+  display: block;
+  height: 100%;
+  color: #000;
+}
+
+.container-list-item a:hover {
+  text-decoration: none;
+  color: #FFF;
+  /*add some cool background thing here*/
+}
+
+.container-list-item:hover {
+  color: #FFF;
+  background-color: #3BC26B;
+}

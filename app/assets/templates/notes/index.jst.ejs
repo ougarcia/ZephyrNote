@@ -2,7 +2,9 @@
 <div class='notes-index-header'>
   <% if (parent.get) { %>
     <h1><%= parent.get('title') %></h1>
-    <a href="#<%= parent.routesName %>/<%= parent.id %>/edit">Edit</a>
+    <a href="#<%= parent.routesName %>/<%= parent.id %>/edit">
+      <span class="glyphicon glyphicon-edit"></span>
+    </a>
   <% } else { %>
     <h1>Notes</h1>
   <% } %>

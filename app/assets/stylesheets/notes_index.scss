@@ -4,6 +4,7 @@
 }
 
 .notes-index-header {
+  position: relative;
   color: #fff;
   background-color: #393D41;
   text-align: center;
@@ -12,6 +13,18 @@
 .notes-index-header h1 {
   display: inline-block;
   /*probably want to change the font eventuall*/
+}
+
+.notes-index-header a {
+  position: absolute;
+  top: 10%;
+  right: 3%;
+  color: #FFF;
+}
+
+.notes-index-header a:hover {
+  text-decoration: none;
+  color: #3BC26B;
 }
 
 .note-list-item {
@@ -27,5 +40,11 @@
 
 .note-list-item a:hover {
   text-decoration: none;
+  color: #FFF;
   /*add some cool background thing here*/
+}
+
+.note-list-item:hover {
+  color: #FFF;
+  background-color: #3BC26B;
 }

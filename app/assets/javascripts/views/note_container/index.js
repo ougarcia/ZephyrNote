@@ -1,4 +1,5 @@
 cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
+  className: 'container-index',
 
   initialize: function () {
     this.collection.each(this.addItemView.bind(this));
