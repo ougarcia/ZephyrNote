@@ -67,7 +67,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     });
 
     var view = new cleverNote.Views.NotesIndex({ model: notebook });
-    //this.rootView.setView(view);
     this._swapView(view);
   },
 

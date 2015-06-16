@@ -1,5 +1,6 @@
 cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
   template: JST['notes/index'],
+  className: 'notes-index',
 
   initialize: function () {
     this.collection = this.model.notes();
