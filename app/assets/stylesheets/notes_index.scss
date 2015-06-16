@@ -1,0 +1,31 @@
+.notes-index {
+  width: 50%;
+  margin: auto;
+}
+
+.notes-index-header {
+  color: #fff;
+  background-color: #393D41;
+  text-align: center;
+}
+
+.notes-index-header h1 {
+  display: inline-block;
+  /*probably want to change the font eventuall*/
+}
+
+.note-list-item {
+  height: 50px;
+  border-bottom: 1px solid #ECECEC;
+}
+
+.note-list-item a {
+  display: block;
+  height: 100%;
+  color: #000;
+}
+
+.note-list-item a:hover {
+  text-decoration: none;
+  /*add some cool background thing here*/
+}

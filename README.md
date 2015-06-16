@@ -9,12 +9,11 @@ cleverNote is a clone of evernote built on Rails and Backbone. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [ ] Create/Edit Notes
-- [ ] View Notes
-- [ ] Sort notes by title, date created, date updated
-- [ ] Organize Notes within Notebooks
-- [ ] Organize Notes with Tags
-- [ ] Tag a note with multiple tags
+- [x] Create/Edit Notes
+- [x] View Notes
+- [x] Organize Notes within Notebooks
+- [x] Organize Notes with Tags
+- [x] Tag a note with multiple tags
 
 
 ## Design Docs
@@ -57,12 +56,17 @@ collection to help me keep track of all the notes that belong to a tag.
 [Details][phase-four]
 
 ### Bonus Features (TBD)
-- [ ] Search
+- [ ] Pretty html/css
+- [ ] Prettier Tag Selection (max-favilli/tagmanager + twitter/typeahead.js)
+- [ ] Fancier text editing capabilities (Quill JS)
+- [ ] Search (typeahead?)
+- [ ] fancier landing page(fullpage.js or bootstrap)
+- [ ] Pretty transitions between pages 
 - [ ] Share notes with other user
 - [ ] Shortcuts
-- [ ] Fancier text editing capabilities
-- [ ] Snippet view in NotesIndex and NotesByTagIndex
-- [ ] Stacks (stacks of notebooks)
+- [ ] Snippet view in NotesIndex
+- [ ] Sort notes by title, date created, date updated
+
 
 
 

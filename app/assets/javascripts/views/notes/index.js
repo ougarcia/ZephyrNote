@@ -11,11 +11,11 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
 
   addItemView: function(note) {
     var subview = new cleverNote.Views.notesIndexItem({ model: note });
-    this.addSubview('ul.notes', subview);
+    this.addSubview('.notes', subview);
   },
 
   removeItemView: function(note) {
-    this.removeModelSubview('ul.notes', note);
+    this.removeModelSubview('.notes', note);
   },
 
   render: function () {

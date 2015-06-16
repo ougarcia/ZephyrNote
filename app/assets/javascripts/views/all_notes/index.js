@@ -1,6 +1,10 @@
 cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
   // might be able to dry this up
   template: JST['notes/index'],
+  className: 'notes-index',
+
+  events: {
+  },
 
   initialize: function () {
     this.collection.fetch({
@@ -14,11 +18,11 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
 
   addItemView: function(note) {
     var subview = new cleverNote.Views.notesIndexItem({ model: note });
-    this.addSubview('ul.notes', subview);
+    this.addSubview('.notes', subview);
   },
 
   removeItemView: function(note) {
-    this.removeModelSubview('ul.notes', note);
+    this.removeModelSubview('.notes', note);
   },
 
   listenForScroll: function () {

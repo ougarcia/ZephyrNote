@@ -19,15 +19,12 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     this.tags = options.tags;
     this.$rootEl = options.$rootEl;
     this.setSidebar();
-    //this.rootView = new cleverNote.Views.Root();
-    //this.$rootEl.html(this.rootView.render().$el);
   },
 
   startPage: function () {
     var notes = new cleverNote.Collections.Notes();
     var view = new cleverNote.Views.allNotesIndex({ collection: notes });
     this._swapView(view);
-    //this.rootView.setView(view);
   },
 
 // Notebooks
@@ -38,7 +35,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     var view = new cleverNote.Views.NotebooksIndex({
       collection: this.notebooks
     });
-    //this.rootView.setView(view);
     this._swapView(view);
   },
 
@@ -48,7 +44,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       model: notebook,
       collection: this.notebooks
     });
-    //this.rootView.setView(view);
     this._swapView(view);
   },
 
@@ -58,7 +53,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       model: notebook,
       collection: this.notebooks
     });
-    //this.rootView.setView(view);
     this._swapView(view);
   },
 
@@ -88,7 +82,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       notebooks: this.notebooks,
       tags: this.tags
     });
-    //this.rootView.setView(view);
     this._swapView(view);
   },
 
@@ -99,7 +92,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       notebooks: this.notebooks,
       tags: this.tags
     });
-    //this.rootView.setView(view);
     this._swapView(view);
   },
 
@@ -109,7 +101,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       notebook: notebook,
       noteId: id
     });
-    //this.rootView.setView(view);
     this._swapView(view);
   },
 // Tags
@@ -120,7 +111,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     var view = new cleverNote.Views.TagsIndex({
       collection: this.tags
     });
-    //this.rootView.setView(view);
     this._swapView(view);
   },
 
@@ -133,7 +123,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     });
 
     var view = new cleverNote.Views.NotesIndex({ model: tag });
-    //this.rootView.setView(view);
     this._swapView(view);
   },
 
@@ -144,7 +133,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       model: tag,
       collection: this.tags
     });
-    //this.rootView.setView(view);
     this._swapView(view);
   },
 
@@ -154,7 +142,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       model: tag,
       collection: this.tags
     });
-    //this.rootView.setView(view);
     this._swapView(view);
   },
 
