@@ -14,12 +14,10 @@
   </div>
 
   <div class="col-md-8 col-md-offset-2">
-    <h1><%= note.isNew() ? "New" : "Edit" %>Note</h1>
-    <div class="form-group">
-      <label for="note-title">Title</label>
+    <div class="form-group form-title-wrapper">
       <input
         id="note-title"
-        class="form-control"
+        class="form-control form-title-input"
         type="text"
         name="note[title]"
         value="<%= note.get('title') %>"
