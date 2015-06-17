@@ -3,7 +3,7 @@ module Api
     # gotta wrap params becaause of tag_ids
     #   tag_ids is some ruby magic where you update the tags through the
     #   tags association
-    wrap_parameters :note, include: [:tag_ids, :title, :body, :notebook_id]
+    #wrap_parameters :note, include: [:tag_ids, :title, :body, :notebook_id]
 
     def index
       @notes = current_user.notes.page(params[:page])
@@ -41,7 +41,7 @@ module Api
 
     private
     def note_params
-      params.require(:note).permit(:title, :body, :notebook_id, tag_ids: [])
+      params.require(:note).permit(:title, :body, :notebook_id, :tags_string)
     end
   end
 end

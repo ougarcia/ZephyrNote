@@ -55,6 +55,7 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     var that = this;
     var attrs = this.$('form').serializeJSON();
     attrs['note']['body'] = this.noteBodySubview._editor.getHTML();
+    debugger;
     // there's a hidden input in the form called hidden-tags
     // i think i can set the name of the hidden input manually
     this.model.set(attrs);
