@@ -18,4 +18,11 @@ FactoryGirl.define do
     title { Faker::Lorem.sentence }
     body { Faker::Hacker.say_something_smart }
   end
+
+  tag_range = Tag.pluck(:id)
+  note_range = Note.pluck(:id)
+  factory :tagging do 
+    note_id { note_range.sample(1) }
+    tag_id { tag_range.sample(1) }
+  end
 end
