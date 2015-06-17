@@ -20,7 +20,7 @@ cleverNote.Views.NoteFormTags = Backbone.View.extend({
       hiddenTagListName: 'note[tags_string]',
       tagsContainer: '#tags-target',
     });
-    this.setTypeahead();
+   this.setTypeahead();
   },
 
   setTypeahead: function () {
@@ -57,6 +57,10 @@ cleverNote.Views.NoteFormTags = Backbone.View.extend({
       source: substringMatcher(tags)
     }).on('typeahead:selected', function (e, d) {
       this.tagApi.tagsManager("pushTag", d.name);
+    });
+ 
+    $('.tm-input').on('tm:refresh', function(e, tag) {
+      $('.tm-input').typeahead('close');
     });
 
   },
