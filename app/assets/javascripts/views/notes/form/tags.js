@@ -48,7 +48,10 @@ cleverNote.Views.NoteFormTags = Backbone.View.extend({
     $('.tm-input').typeahead({
       hint: true,
       highlight: true,
-      minLength: 1
+      minLength: 1,
+      classNames: {
+        menu: "dropdown-menu"
+      }
     }, {
       name: 'tags',
       source: substringMatcher(tags)
