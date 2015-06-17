@@ -95,6 +95,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
   showNote: function(nbid, id) {
+    this.editNote(nbid, id);
+    return;
     var notebook = this.notebooks.getOrFetch(nbid);
     var view = new cleverNote.Views.showNote({
       notebook: notebook,

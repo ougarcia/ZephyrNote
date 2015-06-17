@@ -70,7 +70,7 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     }
     this.notebook.notes().add(this.model);
     Backbone.history.navigate(
-      'notebooks/' + this.notebook.id + '/notes/' + this.model.id,
+      'notebooks/' + this.notebook.id,
       { trigger: true }
     );
   },
