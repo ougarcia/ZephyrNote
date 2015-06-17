@@ -13,7 +13,12 @@ cleverNote.Views.NoteFormTags = Backbone.View.extend({
     this.model.tags().each( function(tag) {
       prefilledTitles.push(tag.get('title'));
     });
-    this.$('.tm-input').tagsManager({ prefilled: prefilledTitles });
+    this.$('.tm-input').tagsManager({
+      prefilled: prefilledTitles,
+      delimiters: [9, 13, 44, 32],
+      deleteTagsOnBackspace: false,
+      hiddenTagListName: 'note[tags_string]'
+    });
     this.setTypeahead();
   },
 
@@ -40,10 +45,14 @@ cleverNote.Views.NoteFormTags = Backbone.View.extend({
     };
 
     $('.typeahead').typeahead({
-    },
-    {
+      hint: true,
+      highlight: true,
+      mingLength: 1
+    }, {
       name: 'tags',
       source: substringMatcher(tags)
+    }).on('typeahead:selected', function (e, d) {
+      tagApi.tagsManager("pushTag", d.name);
     });
 
 
