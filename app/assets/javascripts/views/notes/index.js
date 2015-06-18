@@ -3,7 +3,8 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
   className: 'notes-index',
 
   events: {
-    'click .sort-button': 'reorder'
+    'click .sort-button': 'reorder',
+    'click .new-note-button': 'newNote'
   },
 
   initialize: function () {
@@ -12,6 +13,13 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'add', this.addItemView);
     this.listenTo(this.collection, 'remove', this.removeItemView);
     this.collection.each(this.addItemView.bind(this));
+  },
+
+  newNote: function () {
+    Backbone.history.navigate(
+      '#' + this.model.routesName + '/' + this.model.id + '/notes/new',
+      { trigger: true}
+    );
   },
 
   reorder: function (event) {
@@ -42,7 +50,7 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
         console.log("weird");
     }
     this.collection.sort();
-    if (dir === "descending") {
+    if (dir !== "oldest") {
       this.collection.models = this.collection.models.reverse();
     }
   },
@@ -63,7 +71,9 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template({ parent: this.model });
+    var content = this.template({
+      parent: this.model
+    });
     this.$el.html(content);
     this.attachSubviews();
     $('abbr.timeago').timeago();

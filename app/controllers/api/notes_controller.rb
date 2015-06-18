@@ -6,7 +6,7 @@ module Api
     #wrap_parameters :note, include: [:tag_ids, :title, :body, :notebook_id]
 
     def index
-      @notes = current_user.notes.page(params[:page])
+      @notes = current_user.notes.order(updated_at: :desc).page(params[:page])
       render json: {
         models: @notes,
         page: params[:page],

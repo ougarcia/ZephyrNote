@@ -1,7 +1,12 @@
 <a href= '#notebooks/<%= this.model.get('notebook_id') %>/notes/<%= this.model.id%>'>
   <div class="note-item-container">
     <span><%= note.get('title') %></span>
-    <abbr class="timeago" title="<%= note.get('updated_at') %>"><%= note.get('updated_at') %></abbr>
+    <br>
+    <div class="timestamp">
+      <small><abbr class="timeago" title="<%= note.get('updated_at') %>">
+          <%= note.get('updated_at') %>
+      </abbr><small>
+    </div>
   </div>
 </a>
 

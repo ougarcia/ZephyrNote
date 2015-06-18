@@ -2,20 +2,28 @@
   <h1><%= (view.notebook) ? "Notebooks" : "Tags" %></h1>
 </div>
 
-<div class='container-list-header clearfix'>
+<div class='container-list-header notes-index-subheader clearfix'>
 
   <div class="new-item-link">
     <% if (view.notebook) { %>
-      <a href='#/notebooks/new'>New Notebook</a>
+        <a href='#/notebooks/new'>
+          <button class="btn btn-default btn-sm new-note-button">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </a>
     <% } else { %>
-      <a href='#/tags/new'>New Tag</a>
+      <a href='#/tags/new'>
+        <button class="btn btn-default btn-sm new-note-button">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
+      </a>
     <% } %>
   </div>
 
   <div class="sort-by-section dropdown">
 
     <button
-      class="btn btn-default dropdown-toggle"
+      class="btn btn-default btn-sm dropdown-toggle"
       type="button"
       id="doropdownMenu1"
       data-toggle="dropdown"
@@ -25,12 +33,11 @@
     </button>
 
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li><a href="#" class="sort-button">Created - ascending</a></li>
-      <li><a href="#" class="sort-button">Created - descending</a></li>
-      <li><a href="#" class="sort-button">Updated - ascending</a></li>
-      <li><a href="#" class="sort-button">Updated - descending</a></li>
-      <li><a href="#" class="sort-button">Title - ascending</a></li>
-      <li><a href="#" class="sort-button">Title - descending</a></li>
+      <li><a href="#" class="sort-button">Title</a></li>
+      <li><a href="#" class="sort-button">Created - newest</a></li>
+      <li><a href="#" class="sort-button">Created - oldest</a></li>
+      <li><a href="#" class="sort-button">Updated - newest</a></li>
+      <li><a href="#" class="sort-button">Updated - oldest</a></li>
     </ul>
 
   </div>

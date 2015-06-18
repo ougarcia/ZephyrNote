@@ -27,9 +27,26 @@
   color: #3BC26B;
 }
 
+
+.notes-index-subheader {
+  background-color: #F8F8F8;
+  border-bottom: 1px solid #ECECEC;
+  padding: 5px 5px 5px 5px;
+}
+
+.new-note-button {
+  display: block;
+  float: left;
+}
+
+.sort-button {
+  display: block;
+}
+
+
 .note-list-item {
   height: 50px;
-  border-bottom: 1px solid #ECECEC;
+  border-top: 1px solid #ECECEC;
 }
 
 .note-list-item a {
@@ -48,3 +65,9 @@
   color: #FFF;
   background-color: #3BC26B;
 }
+
+div.timestamp {
+  display: block;
+  float: right;
+}
+

@@ -11,18 +11,20 @@
 </div>
 
 <% if (parent.get) { %>
-  <div class='note-list-header clearfix'>
+  <div class='notes-index-subheader clearfix'>
 
-    <div class="new-note-link">
+    <div class="new-note-button">
       <% if (parent.routesName === "notebooks") { %>
-        <a href='#/notebooks/<%= parent.id %>/notes/new'>New Note</a>
+        <button class="btn btn-default btn-sm new-note-button">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
       <% } %>
     </div>
 
     <div class="sort-by-section dropdown">
 
       <button
-        class="btn btn-default dropdown-toggle"
+        class="btn btn-default btn-small dropdown-toggle"
         type="button"
         id="doropdownMenu1"
         data-toggle="dropdown"
@@ -32,12 +34,11 @@
       </button>
 
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a href="#" class="sort-button">Created - ascending</a></li>
-        <li><a href="#" class="sort-button">Created - descending</a></li>
-        <li><a href="#" class="sort-button">Updated - ascending</a></li>
-        <li><a href="#" class="sort-button">Updated - descending</a></li>
-        <li><a href="#" class="sort-button">Title - ascending</a></li>
-        <li><a href="#" class="sort-button">Title - descending</a></li>
+        <li><a href="#" class="sort-button">Title</a></li>
+        <li><a href="#" class="sort-button">Created - newest</a></li>
+        <li><a href="#" class="sort-button">Created - oldest</a></li>
+        <li><a href="#" class="sort-button">Updated - newest</a></li>
+        <li><a href="#" class="sort-button">Updated - oldest</a></li>
       </ul>
 
     </div>

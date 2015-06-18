@@ -3,9 +3,6 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
   template: JST['notes/index'],
   className: 'notes-index',
 
-  events: {
-  },
-
   initialize: function () {
     this.collection.fetch({
       remove: false,
@@ -19,6 +16,7 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
   addItemView: function(note) {
     var subview = new cleverNote.Views.notesIndexItem({ model: note });
     this.addSubview('.notes', subview);
+    $('abbr.timeago').timeago();
   },
 
   removeItemView: function(note) {
@@ -26,7 +24,6 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
   },
 
   listenForScroll: function () {
-
     $(window).off("scroll");
     var throttled = _.throttle(this.nextPage.bind(this), 200);
     $(window).on("scroll", throttled);
@@ -48,6 +45,7 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
     var content = this.template();
     this.$el.html(content);
     this.attachSubviews();
+    $('abbr.timeago').timeago();
     this.listenForScroll();
     return this;
   }
