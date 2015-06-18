@@ -20,6 +20,7 @@
 //= require quill
 //= require tagmanager
 //= require typeahead.bundle
+//= require jquery.timeago
 //= require cleverNote
 //= require_tree ../templates
 //= require_tree ./models

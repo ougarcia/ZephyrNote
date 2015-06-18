@@ -66,6 +66,7 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
     var content = this.template({ parent: this.model });
     this.$el.html(content);
     this.attachSubviews();
+    $('abbr.timeago').timeago();
     return this;
   }
 });
