@@ -2,11 +2,58 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
   className: 'container-index',
   template: JST['note_container/index'],
 
+
+  events: {
+    'click .sort-button': 'reorder'
+  },
+
   initialize: function () {
     this.collection.each(this.addItemView.bind(this));
     this.listenTo(this.collection, 'add', this.addItemView);
     this.listenTo(this.collection, 'remove', this.removeItemView);
   },
+
+
+  reorder: function (event) {
+    event.preventDefault();
+    var $target = $(event.currentTarget);
+    this.clearSubviews();
+    var order = $target.text().split(" - ")[0];
+    var dir = $target.text().split(" - ")[1];
+    this.reorderCollection(order, dir);
+    this.collection.each(this.addItemView.bind(this));
+
+    this.render();
+  },
+
+
+  reorderCollection: function(order, dir) {
+    switch (order) {
+      case "Created":
+        this.collection.comparator = "created_at";
+        break;
+      case "Updated":
+        this.collection.comparator = "updated_at";
+        break;
+      case "Title":
+        this.collection.comparator = "title";
+        break;
+      default:
+        console.log("weird");
+    }
+    this.collection.sort();
+    if (dir === "descending") {
+      this.collection.models = this.collection.models.reverse();
+    }
+  },
+
+  clearSubviews: function () {
+    this.eachSubview(function(subview) {
+      subview.remove();
+    });
+    this._subviews['.container-list'] = _([]);
+  },
+
 
   addItemView: function (item) {
     var subview;
