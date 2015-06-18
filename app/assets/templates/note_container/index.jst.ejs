@@ -1,0 +1,10 @@
+<div class="container-header">
+  <h1><%= (view.notebook) ? "Notebooks" : "Tags" %></h1>
+</div>
+<div class='container-list'>
+</div>
+<% if (view.notebook) { %>
+  <a href='#/notebooks/new'>New Notebook</a>
+<% } else { %>
+  <a href='#/tags/new'>New Tag</a>
+<% } %>

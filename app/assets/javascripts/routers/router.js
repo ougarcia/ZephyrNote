@@ -75,6 +75,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 
   newNote: function (nbid) {
     var note = new cleverNote.Models.Note();
+    note.set('title', 'Untitled');
     var view = new cleverNote.Views.NoteForm({
       note: note,
       notebookId: nbid,
@@ -96,13 +97,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 
   showNote: function(nbid, id) {
     this.editNote(nbid, id);
-    return;
-    var notebook = this.notebooks.getOrFetch(nbid);
-    var view = new cleverNote.Views.showNote({
-      notebook: notebook,
-      noteId: id
-    });
-    this._swapView(view);
   },
 // Tags
 //==============================================================================

@@ -1,6 +1,7 @@
 cleverNote.Views.notesContainerIndexItem = Backbone.View.extend({
   tagName: 'div',
   className: 'container-list-item',
+  template: JST['note_container/index_item'],
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);

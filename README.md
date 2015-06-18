@@ -57,12 +57,11 @@ collection to help me keep track of all the notes that belong to a tag.
 
 ### Bonus Features (TBD)
 - [ ] Pretty html/css
-- [ ] Prettier Tag Selection (max-favilli/tagmanager + twitter/typeahead.js)
-- [ ] Fancier text editing capabilities (Quill JS)
-- [ ] Search (typeahead?)
+- [x] Prettier Tag Selection (max-favilli/tagmanager + twitter/typeahead.js)
+- [x] Fancier text editing capabilities (Quill JS)
+- [ ] Search
 - [ ] fancier landing page(fullpage.js or bootstrap)
-- [ ] Pretty transitions between pages 
-- [ ] Share notes with other user
+- [ ] Pretty transitions between pages (Animate css)
 - [ ] Shortcuts
 - [ ] Snippet view in NotesIndex
 - [ ] Sort notes by title, date created, date updated

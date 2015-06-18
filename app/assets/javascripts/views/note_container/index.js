@@ -1,5 +1,6 @@
 cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
   className: 'container-index',
+  template: JST['note_container/index'],
 
   initialize: function () {
     this.collection.each(this.addItemView.bind(this));
@@ -14,15 +15,15 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
     } else {
       subview = new cleverNote.Views.TagsIndexItem({ model: item });
     }
-    this.addSubview(this.subviewSelector, subview);
+    this.addSubview('.container-list', subview);
   },
 
   removeItemView: function (item) {
-    this.removeModelSubview(this.subviewSelector, item);
+    this.removeModelSubview('.container-list', item);
   },
 
   render: function () {
-    var content = this.template();
+    var content = this.template({ view: this });
     this.$el.html(content);
     this.attachSubviews();
     return this;
