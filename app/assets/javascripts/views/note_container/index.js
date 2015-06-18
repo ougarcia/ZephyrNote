@@ -14,6 +14,10 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
   },
 
 
+  setModal: function () {
+    
+  },
+
   reorder: function (event) {
     event.preventDefault();
     var $target = $(event.currentTarget);
@@ -42,7 +46,7 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
         console.log("weird");
     }
     this.collection.sort();
-    if (dir === "oldest") {
+    if (dir === "newest") {
       this.collection.models = this.collection.models.reverse();
     }
   },
@@ -56,6 +60,7 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
 
 
   addItemView: function (item) {
+    //TODO: might need to go back and fix this, doesn't make much sense
     var subview;
     if (item.routesName === 'notebooks') {
       subview = new cleverNote.Views.NotebooksIndexItem({ model: item });

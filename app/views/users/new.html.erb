@@ -1,4 +1,5 @@
-<h1>Sign Up</h1>
-<%= render 'shared/form', form_action: users_url, submit_text: "Sign Up", user: @user %>
+<div class="container">
+  <%= render 'shared/form', form_action: users_url, submit_text: "Sign Up", user: @user %>
 <br>
 <%= link_to "Log In", new_session_url %>
+</div>

@@ -1,5 +1,6 @@
 cleverNote.Views.noteContainerForm = Backbone.View.extend({
   tagName: 'form',
+  template: JST['note_container/form'],
 
   events: {
     'submit': 'handleSubmit'
@@ -20,7 +21,7 @@ cleverNote.Views.noteContainerForm = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template(this.templateOptions);
+    var content = this.template({ item: this.model });
     this.$el.html(content);
     return this;
   }
