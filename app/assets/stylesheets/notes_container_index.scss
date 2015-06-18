@@ -34,3 +34,19 @@
   color: #FFF;
   background-color: #3BC26B;
 }
+
+.container-list-header {
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid #ECECEC;
+}
+
+.new-item-link {
+  display: block;
+  float: left;
+}
+
+.sort-by-section {
+  display: block;
+  float: right;
+}
