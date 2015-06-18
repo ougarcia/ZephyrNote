@@ -10,6 +10,41 @@
   <% } %>
 </div>
 
+<% if (parent.get) { %>
+  <div class='note-list-header clearfix'>
+
+    <div class="new-note-link">
+      <% if (parent.routesName === "notebooks") { %>
+        <a href='#/notebooks/<%= parent.id %>/notes/new'>New Note</a>
+      <% } %>
+    </div>
+
+    <div class="sort-by-section dropdown">
+
+      <button
+        class="btn btn-default dropdown-toggle"
+        type="button"
+        id="doropdownMenu1"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="true">
+        Sort by<span class="caret"></span>
+      </button>
+
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a href="#" class="sort-button">Created - ascending</a></li>
+        <li><a href="#" class="sort-button">Created - descending</a></li>
+        <li><a href="#" class="sort-button">Updated - ascending</a></li>
+        <li><a href="#" class="sort-button">Updated - descending</a></li>
+        <li><a href="#" class="sort-button">Title - ascending</a></li>
+        <li><a href="#" class="sort-button">Title - descending</a></li>
+      </ul>
+
+    </div>
+
+  </div>
+<% } %>
+
 <div class="notes">
 </div>
 
