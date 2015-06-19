@@ -5,7 +5,7 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
 
   events: {
     'click .sort-button': 'reorder',
-    'click .new-note-button': 'modalForm'
+    'click .new-item-button': 'modalForm'
   },
 
   initialize: function () {

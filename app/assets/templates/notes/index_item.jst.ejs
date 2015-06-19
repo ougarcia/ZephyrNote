@@ -3,11 +3,13 @@
     <br>
 
     <div class="second-row clearfix">
-      <small class="pull-left">
-        <% note.tags().each( function(tag) { %>
-          <span><%= tag.get('title') %></span>
-        <% }) %>
-      </small>
+      <% if (note.tags().length > 0) { %>
+        <small class="pull-left">
+          <% note.tags().each( function(tag) { %>
+            <span><%= tag.get('title') %></span>
+          <% }) %>
+        </small>
+      <% } %>
 
       <div class="timestamp">
         <small><abbr class="timeago pull-right" title="<%= note.get('updated_at') %>">
