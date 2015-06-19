@@ -3,8 +3,8 @@ cleverNote.Views.NoteFormTags = Backbone.View.extend({
   template: JST['notes/form/tags'],
 
   initialize: function (options) {
-    this.tagIds = options.tagIds;
     this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.model, 'sync', this.render);
   },
 
   onRender: function () {
@@ -67,9 +67,12 @@ cleverNote.Views.NoteFormTags = Backbone.View.extend({
   },
 
   render: function () {
+    var tagIds = this.model.tags().map( function(tag) {
+      return tag.id;
+    });
     var content = this.template({
       tags: this.collection,
-      tagIds: this.tagIds
+      tagIds: tagIds
     });
     this.$el.html(content);
     this.onRender();

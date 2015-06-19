@@ -1,4 +1,9 @@
 cleverNote.Routers.Router = Backbone.Router.extend({
+
+
+  // TODO: might want to refactor so that when you fech a notebook it
+  // doesn't fetch the body. This might make it so that I don't have to
+  // nest the notes urls within the noteboooks url.
   routes: {
     '': 'startPage',
     'notebooks/:nbid/notes/new': 'newNote',
@@ -74,11 +79,11 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 //==============================================================================
 
   newNote: function (nbid) {
-    var note = new cleverNote.Models.Note();
-    note.set('title', 'Untitled');
+    this.notebooks.fetch();
+    this.tags.fetch();
+    var note = new cleverNote.Models.Note({ title: 'Untitled' });
     var view = new cleverNote.Views.NoteForm({
-      note: note,
-      notebookId: nbid,
+      model: note,
       notebooks: this.notebooks,
       tags: this.tags
     });
@@ -86,9 +91,12 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
   editNote: function (nbid, id) {
+    this.notebooks.fetch();
+    this.tags.fetch();
+    var note = new cleverNote.Models.Note({ id: id });
+    note.fetch();
     var view = new cleverNote.Views.NoteForm({
-      noteId: id,
-      notebookId: nbid,
+      model: note,
       notebooks: this.notebooks,
       tags: this.tags
     });

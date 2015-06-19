@@ -7,21 +7,13 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
+    this.listenTo(this.model, 'sync', this.render);
     this.notebooks = options.notebooks;
     this.tags = options.tags;
-    this.notebook = this.notebooks.getOrFetch(
-      options.notebookId,
-      this.setModel.bind(this, options)
-    );
-    this.notebooks.fetch();
-    this.tags.fetch();
+    this.setSubviews();
   },
-  
-  setModel: function (options) {
-    this.model = options.note || this.notebook.notes().get(options.noteId);
-    this.tagIds = this.model.tags().map( function(tag) {
-      return tag.id;
-    });
+
+  setSubviews: function () {
     this.addTagsSubview();
     this.addNotebooksSubview();
     this.addNoteBodySubview();
@@ -31,7 +23,7 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
   addNotebooksSubview: function () {
     var subview = new cleverNote.Views.NoteFormNotebooks({
       collection: this.notebooks,
-      model: this.notebook
+      model: this.model 
     });
     this.addSubview('#notebooks-form', subview);
   },
@@ -39,7 +31,6 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
   addTagsSubview: function () {
     this.tagsSubview = new cleverNote.Views.NoteFormTags({
       collection: this.tags,
-      tagIds: this.tagIds,
       model: this.model
     });
     this.addSubview('#tags-form', this.tagsSubview);
@@ -58,32 +49,22 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     this.model.set(attrs);
     this.model.save({}, {
       success: function () {
-        that.submitSuccess();
+        Backbone.history.navigate(
+          'notebooks/' + that.model.get('notebook_id'),
+          { trigger: true }
+        );
       }
     });
   },
 
-  submitSuccess: function () {
-    if ( (this.model.get('notebook_id') !== this.notebook.id) ) {
-      this.notebook.notes().remove(this.note);
-      this.notebook = this.notebooks.getOrFetch(this.model.get('notebook_id'));
-    }
-    this.notebook.notes().add(this.model);
-    Backbone.history.navigate(
-      'notebooks/' + this.notebook.id,
-      { trigger: true }
-    );
-  },
 
   render: function () {
-    if (this.model) {
-      var content = this.template({ note: this.model });
-      this.$el.html(content);
-      this.attachSubviews();
-      this.noteBodySubview.onRender();
-      this.tagsSubview.onRender();
-      // setTimeout(this.tagsSubview.onRender.bind(this.tagsSubview), 0);
-    }
+    var content = this.template({ note: this.model });
+    this.$el.html(content);
+    this.attachSubviews();
+    // the first part of these shouldn't be necessary when i'm done.kjj
+    this.noteBodySubview && this.noteBodySubview.onRender();
+    this.tagsSubview && this.tagsSubview.onRender();
     return this;
   }
 });

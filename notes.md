@@ -9,3 +9,4 @@ navbar goes under my sidebar
 redo the whole new note thing. make it so you don't need the notebook
 for a new note. might be impossible. 
 
+add the tags in the note index item view

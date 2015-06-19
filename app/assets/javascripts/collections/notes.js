@@ -16,5 +16,28 @@ cleverNote.Collections.Notes = Backbone.Collection.extend({
     } else {
       return response;
     }
+  },
+
+
+  getOrFetch: function(id, cb) {
+    var that = this;
+    var note;
+    if ( !(note = this.get(id)) ) {
+      note = new cleverNote.Models.Note({ id: id });
+      note.fetch({
+        success: function () {
+          that.add(note);
+          if (cb) {
+            cb(note);
+          }
+        }
+      });
+    } else {
+      note.fetch({
+        success: cb
+      });
+    }
+
+    return note;
   }
 });

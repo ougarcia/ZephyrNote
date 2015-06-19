@@ -1,9 +1,14 @@
 module Api
   class NotesController < ApiController
-    # gotta wrap params becaause of tag_ids
-    #   tag_ids is some ruby magic where you update the tags through the
-    #   tags association
-    #wrap_parameters :note, include: [:tag_ids, :title, :body, :notebook_id]
+
+    def show
+      @note = Note.find(params[:id]);
+      if @note
+        render :show
+      else
+        render json: {}, status: :unproccessable_entity
+      end
+    end
 
     def index
       @notes = current_user.notes.order(updated_at: :desc).page(params[:page])
