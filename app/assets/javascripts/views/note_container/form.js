@@ -17,8 +17,6 @@ cleverNote.Views.noteContainerForm = Backbone.View.extend({
 
       that.model.save({}, {
         success: function () {
-          that.collection.add(that.model, { merge: true});
-          // TODO: do i need a merge: true here?
           Backbone.history.navigate(that.model.routesName + '/' + that.model.id, { trigger: true });
         }
       });

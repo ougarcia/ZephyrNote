@@ -4,7 +4,8 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
 
   events: {
     'click .sort-button': 'reorder',
-    'click .new-note-button': 'newNote'
+    'click .new-note-button': 'newNote',
+    'click .edit-notebook-link': 'showModal'
   },
 
   initialize: function () {
@@ -13,6 +14,20 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'add', this.addItemView);
     this.listenTo(this.collection, 'remove', this.removeItemView);
     this.collection.each(this.addItemView.bind(this));
+  },
+
+
+  setModal: function () {
+    var newView = new cleverNote.Views.noteContainerForm({
+      model: this.model,
+    });
+    this.$('.my-modal').html(newView.$el);
+    newView.render();
+  },
+
+  showModal: function(event) {
+    event.preventDefault();
+    $('.my-modal').modal();
   },
 
   newNote: function () {
@@ -76,6 +91,7 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
     });
     this.$el.html(content);
     this.attachSubviews();
+    this.setModal();
     $('abbr.timeago').timeago();
     return this;
   }

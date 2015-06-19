@@ -2,7 +2,7 @@
 <div class='notes-index-header'>
   <% if (parent.get) { %>
     <h1><%= parent.get('title') %></h1>
-    <a href="#<%= parent.routesName %>/<%= parent.id %>/edit">
+    <a href="#<%= parent.routesName %>/<%= parent.id %>/edit" class="edit-notebook-link">
       <span class="glyphicon glyphicon-edit"></span>
     </a>
   <% } else { %>
@@ -49,3 +49,5 @@
 <div class="notes">
 </div>
 
+<div class="my-modal modal fade">
+</div>
