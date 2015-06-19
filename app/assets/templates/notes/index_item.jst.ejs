@@ -1,12 +1,19 @@
 <a href= '#/notes/<%= this.model.id%>'>
-  <div class="note-item-container">
     <span><%= note.get('title') %></span>
     <br>
-    <div class="timestamp">
-      <small><abbr class="timeago" title="<%= note.get('updated_at') %>">
-          <%= note.get('updated_at') %>
-      </abbr><small>
+
+    <div class="second-row clearfix">
+      <small class="pull-left">
+        <% note.tags().each( function(tag) { %>
+          <span><%= tag.get('title') %></span>
+        <% }) %>
+      </small>
+
+      <div class="timestamp">
+        <small><abbr class="timeago pull-right" title="<%= note.get('updated_at') %>">
+            <%= note.get('updated_at') %>
+        </abbr></small>
+      </div>
     </div>
-  </div>
 </a>
 

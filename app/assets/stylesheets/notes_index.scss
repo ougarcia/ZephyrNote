@@ -39,7 +39,7 @@
 
 
 .note-list-item {
-  height: 50px;
+  min-height: 40px;
   border-top: 1px solid #ECECEC;
 }
 
@@ -52,7 +52,6 @@
 .note-list-item a:hover {
   text-decoration: none;
   color: #FFF;
-  /*add some cool background thing here*/
 }
 
 .note-list-item:hover {
@@ -61,8 +60,6 @@
 }
 
 div.timestamp {
-  display: block;
-  float: right;
 }
 
 .sort-by-section {
@@ -86,3 +83,8 @@ div.timestamp {
   }
 }
 
+div.second-row span {
+  color: #ECECEC;
+  background: #2482BF;
+  border: 1px solid #2482BF;
+}
