@@ -1,5 +1,5 @@
 cleverNote.Views.noteContainerForm = Backbone.View.extend({
-  tagName: 'form',
+  className: "modal-dialog",
   template: JST['note_container/form'],
 
   events: {
@@ -8,15 +8,21 @@ cleverNote.Views.noteContainerForm = Backbone.View.extend({
 
   handleSubmit: function(event) {
     event.preventDefault();
+    $('.my-modal').modal('toggle');
     var that = this;
-    var attrs = this.$el.serializeJSON();
+    var attrs = this.$('form').serializeJSON();
     this.model.set(attrs);
-    this.model.save({}, {
-      success: function () {
-        that.collection.add(that.model, { merge: true});
-        // TODO: do i need a merge: true here?
-        Backbone.history.navigate(that.model.routesName + '/' + that.model.id, { trigger: true });
-      }
+    // gotta wait for the modal to go away before redirecting
+    $('.my-modal').one('hidden.bs.modal', function(e) {
+
+      that.model.save({}, {
+        success: function () {
+          that.collection.add(that.model, { merge: true});
+          // TODO: do i need a merge: true here?
+          Backbone.history.navigate(that.model.routesName + '/' + that.model.id, { trigger: true });
+        }
+      });
+      
     });
   },
 

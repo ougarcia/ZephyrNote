@@ -4,7 +4,8 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
 
 
   events: {
-    'click .sort-button': 'reorder'
+    'click .sort-button': 'reorder',
+    'click .new-note-button': 'modalForm'
   },
 
   initialize: function () {
@@ -15,8 +16,20 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
 
 
   setModal: function () {
-    
+    var newItem = new this.collection.model();
+    var newView = new cleverNote.Views.noteContainerForm({
+      model: newItem,
+      collection: this.collection
+    });
+    this.$('.my-modal').html(newView.$el);
+    newView.render();
   },
+
+  modalForm: function (event) {
+    event.preventDefault();
+    $('.my-modal').modal();
+  },
+
 
   reorder: function (event) {
     event.preventDefault();
@@ -60,13 +73,7 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
 
 
   addItemView: function (item) {
-    //TODO: might need to go back and fix this, doesn't make much sense
-    var subview;
-    if (item.routesName === 'notebooks') {
-      subview = new cleverNote.Views.NotebooksIndexItem({ model: item });
-    } else {
-      subview = new cleverNote.Views.TagsIndexItem({ model: item });
-    }
+    var subview = new cleverNote.Views.notesContainerIndexItem({ model: item });
     this.addSubview('.container-list', subview);
   },
 
@@ -78,6 +85,7 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
     var content = this.template({ view: this });
     this.$el.html(content);
     this.attachSubviews();
+    this.setModal();
     return this;
   }
 });
