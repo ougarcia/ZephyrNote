@@ -4,7 +4,6 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
 
   events: {
     'click .sort-button': 'reorder',
-    'click .new-note-button': 'newNote',
     'click .edit-notebook-link': 'showModal'
   },
 
@@ -28,13 +27,6 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
   showModal: function(event) {
     event.preventDefault();
     $('.my-modal').modal();
-  },
-
-  newNote: function () {
-    Backbone.history.navigate(
-      '#' + this.model.routesName + '/' + this.model.id + '/notes/new',
-      { trigger: true}
-    );
   },
 
   reorder: function (event) {

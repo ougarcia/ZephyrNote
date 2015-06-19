@@ -12,6 +12,9 @@ cleverNote.Views.Sidebar = Backbone.View.extend({
   goTo: function(event) {
     var destination;
     switch($(event.currentTarget).attr('id')) {
+      case 'new-button':
+        destination = 'notes/new';
+        break;
       case 'notebooks-button':
         destination = 'notebooks';
         break;

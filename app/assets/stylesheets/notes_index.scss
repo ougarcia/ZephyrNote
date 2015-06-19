@@ -15,24 +15,18 @@
   /*probably want to change the font eventuall*/
 }
 
-.notes-index-header a {
+.notes-index-header a.edit-notebook-link {
   position: absolute;
   top: 10%;
   right: 3%;
   color: #FFF;
 }
 
-.notes-index-header a:hover {
+.notes-index-header a.edit-notebook-link:hover {
   text-decoration: none;
   color: #3BC26B;
 }
 
-
-.notes-index-subheader {
-  background-color: #F8F8F8;
-  border-bottom: 1px solid #ECECEC;
-  padding: 5px 5px 5px 5px;
-}
 
 .new-note-button {
   display: block;
@@ -69,5 +63,26 @@
 div.timestamp {
   display: block;
   float: right;
+}
+
+.sort-by-section {
+  position: absolute;
+  bottom: 5%;
+  right: 0%;
+}
+
+.sort-by-section > button.btn-link{
+  display: block;
+  text-decoration: none;
+  color: #fff;
+
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  &:focus {
+    outline: 0;
+  }
 }
 

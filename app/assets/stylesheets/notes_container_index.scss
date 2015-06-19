@@ -4,6 +4,7 @@
 }
 
 .container-header {
+  position: relative;
   color: #fff;
   background-color: #393D41;
   text-align: center;
@@ -44,7 +45,17 @@
   float: left;
 }
 
-.sort-by-section {
+button.new-item-button {
+  color: #FFF;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color: #ECECEC;
+  }
+}
+
+div.new-item-link {
   display: block;
   float: right;
 }

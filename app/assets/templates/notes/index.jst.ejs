@@ -1,36 +1,16 @@
 <!-- maybe add an octothorpe here if parent is a tag -->
 <div class='notes-index-header'>
   <% if (parent.get) { %>
-    <h1><%= parent.get('title') %></h1>
-    <a href="#<%= parent.routesName %>/<%= parent.id %>/edit" class="edit-notebook-link">
-      <span class="glyphicon glyphicon-edit"></span>
-    </a>
-  <% } else { %>
-    <h1>Notes</h1>
-  <% } %>
-</div>
-
-<% if (parent.get) { %>
-  <div class='notes-index-subheader clearfix'>
-
-    <div class="new-note-button">
-      <% if (parent.routesName === "notebooks") { %>
-        <button class="btn btn-default btn-sm new-note-button">
-          <span class="glyphicon glyphicon-plus"></span>
-        </button>
-      <% } %>
-    </div>
 
     <div class="sort-by-section dropdown">
-
       <button
-        class="btn btn-default btn-small dropdown-toggle"
+        class="btn btn-link dropdown-toggle"
         type="button"
         id="doropdownMenu1"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="true">
-        Sort by<span class="caret"></span>
+        Sort by <span class="caret"></span>
       </button>
 
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -40,11 +20,17 @@
         <li><a href="#" class="sort-button">Updated - newest</a></li>
         <li><a href="#" class="sort-button">Updated - oldest</a></li>
       </ul>
-
     </div>
 
-  </div>
-<% } %>
+    <h1><%= parent.get('title') %></h1>
+    <a href="#<%= parent.routesName %>/<%= parent.id %>/edit" class="edit-notebook-link">
+      <span class="glyphicon glyphicon-edit"></span>
+    </a>
+  <% } else { %>
+    <h1>Notes</h1>
+  <% } %>
+</div>
+
 
 <div class="notes">
 </div>
