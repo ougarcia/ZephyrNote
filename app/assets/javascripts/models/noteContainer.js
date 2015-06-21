@@ -7,7 +7,7 @@ cleverNote.Models.noteContainer = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.notes) {
-      this.notes().set(response.notes, { parse: true });
+      this.notes().set(response.notes, this.parseOptions);
       delete response['notes'];
     }
 

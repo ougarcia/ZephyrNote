@@ -1,26 +1,25 @@
-cleverNote.Collections.noteContainer = {
+cleverNote.Collections.noteContainer = Backbone.Collection.extend({
 
   getOrFetch: function(id, cb) {
-    // might crash if already in collection and you don't pass a
-    // callback
     var that = this;
-    var notebook;
-    if ( !(notebook = this.get(id)) ) {
-      notebook = new cleverNote.Models.Notebook({ id: id });
-      notebook.fetch({
+    var item;
+    if ( !(item = this.get(id)) ) {
+      item = new this.model({ id: id });
+      item.fetch({
         success: function () {
-          that.add(notebook);
-          if (cb) {
-            cb(notebook);
-          }
+          that.add(item);
+          !!cb && cb(item);
         }
       });
     } else {
-      notebook.fetch({
-        success: cb
+      item.fetch({
+        success: function () {
+          !!cb && cb(item);
+        }
       });
     }
 
-    return notebook;
+    return item;
   }
-};
+
+});

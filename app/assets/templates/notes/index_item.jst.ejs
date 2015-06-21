@@ -3,9 +3,9 @@
     <br>
 
     <div class="second-row clearfix">
-      <% if (note.tags().length > 0) { %>
+      <% if (!!tags) { %>
         <small class="pull-left">
-          <% note.tags().each( function(tag) { %>
+          <% tags.each( function(tag) { %>
             <span><%= tag.get('title') %></span>
           <% }) %>
         </small>

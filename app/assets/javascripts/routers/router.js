@@ -36,6 +36,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 
 
   showNotebook: function (id) {
+    console.log('in notebook show');
     var notebook = this.notebooks.getOrFetch(id);
     var that = this;
     //TODO: I think i want to get rid of this line
@@ -78,9 +79,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 
   tagsIndex: function () {
     this.tags.fetch();
-    var view = new cleverNote.Views.TagsIndex({
-      collection: this.tags
-    });
+    var view = new cleverNote.Views.TagsIndex({ collection: this.tags });
     this._swapView(view);
   },
 
@@ -88,7 +87,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     var tag = this.tags.getOrFetch(id);
     var that = this;
     tag.fetch({ success: that.tags.add.bind(tag, { merge: true }) });
-
     var view = new cleverNote.Views.NotesIndex({ model: tag });
     this._swapView(view);
   },
