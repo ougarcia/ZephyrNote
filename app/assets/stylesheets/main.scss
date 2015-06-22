@@ -1,8 +1,14 @@
+#content {
+  margin-left: 50px;
+}
+
 #middle-content {
   width: 40%;
   min-height: 100%;
+  float: left;
 }
 
 #right-content {
   width: 60%;
+  float: left;
 }

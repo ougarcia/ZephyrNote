@@ -1,5 +1,5 @@
 cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
-  className: 'row',
+  className: '',
   template: JST['notes/form'],
 
   events: {

@@ -21,6 +21,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     var notes = new cleverNote.Collections.Notes();
     var view = new cleverNote.Views.allNotesIndex({ collection: notes });
     this._swapView(view);
+    var rightView = new Backbone.View();
+    this._setRightView(rightView);
   },
 
 // Notebooks
@@ -32,6 +34,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       collection: this.notebooks
     });
     this._swapView(view);
+    var rightView = new Backbone.View();
+    this._setRightView(rightView);
   },
 
 
@@ -57,20 +61,26 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       notebooks: this.notebooks,
       tags: this.tags
     });
-    this._swapView(view);
+    this.startPage();
+    this._setRightView(view);
   },
 
   showNote: function(id) {
     this.notebooks.fetch();
     this.tags.fetch();
     var note = new cleverNote.Models.Note({ id: id });
-    note.fetch();
+    var that = this;
+    note.fetch({
+      success: function () {
+        that.showNotebook(note.get('notebook_id'));
+      }
+    });
     var view = new cleverNote.Views.NoteForm({
       model: note,
       notebooks: this.notebooks,
       tags: this.tags
     });
-    this._swapView(view);
+    this._setRightView(view);
   },
 
 // Tags
@@ -80,6 +90,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     this.tags.fetch();
     var view = new cleverNote.Views.TagsIndex({ collection: this.tags });
     this._swapView(view);
+    var rightView = new Backbone.View();
+    this._setRightView(rightView);
   },
 
   showTag: function (id) {
@@ -98,13 +110,19 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     $('#sidebar').html(view.render().$el);
   },
 
-  setContainerView: function () {
-  },
 
   _swapView: function(view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
     $('#middle-content').html(view.$el);
+    view.render();
+    view.onRender && view.onRender();
+  },
+
+  _setRightView: function(view) {
+    this._rightView && this._rightView.remove();
+    this._rightView = view;
+    $('#right-content').html(view.$el);
     view.render();
     view.onRender && view.onRender();
   }
