@@ -38,9 +38,9 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   showNotebook: function (id) {
     var notebook = this.notebooks.getOrFetch(id);
     var that = this;
-    //TODO: I think i want to get rid of this line
-    notebook.fetch({ success: that.notebooks.add.bind(notebook, { merge: true }) });
-
+    notebook.fetch({
+      success: that.notebooks.add.bind(notebook, { merge: true })
+    });
     var view = new cleverNote.Views.NotesIndex({ model: notebook });
     this._swapView(view);
   },
@@ -98,10 +98,13 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     $('#sidebar').html(view.render().$el);
   },
 
+  setContainerView: function () {
+  },
+
   _swapView: function(view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
-    this.$rootEl.html(view.$el);
+    $('#middle-content').html(view.$el);
     view.render();
     view.onRender && view.onRender();
   }

@@ -8,7 +8,7 @@ window.cleverNote = {
     var notebooks = new cleverNote.Collections.Notebooks();
     var tags = new cleverNote.Collections.Tags();
     var router = new cleverNote.Routers.Router({
-      $rootEl: $('#content'),
+      $rootEl: $('#big-container'),
       notebooks: notebooks,
       tags: tags
     });
