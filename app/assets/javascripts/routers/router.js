@@ -36,7 +36,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 
 
   showNotebook: function (id) {
-    console.log('in notebook show');
     var notebook = this.notebooks.getOrFetch(id);
     var that = this;
     //TODO: I think i want to get rid of this line

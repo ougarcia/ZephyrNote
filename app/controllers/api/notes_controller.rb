@@ -12,11 +12,13 @@ module Api
 
     def index
       @notes = current_user.notes.order(updated_at: :desc).page(params[:page])
-      render json: {
-        models: @notes,
-        page: params[:page],
-        total_pages: @notes.total_pages
-      }
+      @page  = params[:page]
+      @total_pages = @notes.total_pages
+      #render json: {
+        #models: @notes,
+        #page: params[:page],
+        #total_pages: @notes.total_pages
+      #}
     end
 
     def create
@@ -30,7 +32,6 @@ module Api
 
     def update
       @note = Note.find(params[:id])
-      # might need to manually wrap tag_ids
       if @note && @note.update(note_params)
         render json: @note
       else

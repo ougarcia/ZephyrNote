@@ -7,6 +7,7 @@ cleverNote.Views.notesIndexItem = Backbone.View.extend({
   },
 
   render: function () {
+    debugger;
     var content = this.template({
       note: this.model,
       tags: this.model.tags()
