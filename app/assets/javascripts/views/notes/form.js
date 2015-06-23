@@ -49,10 +49,7 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     this.model.set(attrs);
     this.model.save({}, {
       success: function () {
-        Backbone.history.navigate(
-          'notebooks/' + that.model.get('notebook_id'),
-          { trigger: true }
-        );
+        Backbone.history.navigate('', { trigger: true });
       }
     });
   },
@@ -62,7 +59,6 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     var content = this.template({ note: this.model });
     this.$el.html(content);
     this.attachSubviews();
-    // the first part of these shouldn't be necessary when i'm done.kjj
     this.noteBodySubview && this.noteBodySubview.onRender();
     this.tagsSubview && this.tagsSubview.onRender();
     return this;
