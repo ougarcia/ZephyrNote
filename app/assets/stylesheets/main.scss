@@ -4,11 +4,16 @@
 
 #middle-content {
   width: 40%;
-  min-height: 100%;
+  height: 100vh;
   float: left;
+  border-right: 1px solid black;
+}
+#middle-content .notes, #middle-content .container-list {
+  overflow-y: auto;
 }
 
 #right-content {
   width: 60%;
   float: left;
+  overflow-y: auto;
 }
