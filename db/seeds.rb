@@ -14,6 +14,7 @@ end
 
 10.times do
 begin
+  p "trying to create tag"
   FactoryGirl.create(:tag, user: u1);
   rescue
     retry
