@@ -34,6 +34,7 @@ gem 'kaminari'
 gem 'tagmanager-rails'
 gem 'factory_girl_rails'
 gem 'faker'
+gem 'rspec-rails'
 
 # gem 'rails_12factor'
 
@@ -51,5 +52,4 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'quiet_assets'
-  gem 'rspec-rails'
 end
