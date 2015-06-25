@@ -19,4 +19,7 @@ FactoryGirl.define do
     body { Faker::Hacker.say_something_smart }
   end
 
+  factory :tagging do
+  end
+
 end

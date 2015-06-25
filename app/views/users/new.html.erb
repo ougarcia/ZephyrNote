@@ -1,5 +1,8 @@
 <div class="container">
   <%= render 'shared/form', form_action: users_url, submit_text: "Sign Up", user: @user %>
-<br>
-<%= link_to "Log In", new_session_url %>
+  <div class="form-signin">
+    <a href="<%= new_session_url %>" class="switch-button">
+      <button class="btn btn-lg btn-primary btn-block btn-info">Log In</button>
+    </a>
+  </div>
 </div>

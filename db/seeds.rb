@@ -1,11 +1,11 @@
-u1 = User.create(username: 'oscar', password: 'password')
-10.times do 
+u1 = User.create(username: 'guest', password: 'password')
+25.times do 
   FactoryGirl.create(:notebook, user: u1)
 end
 
 
-(1..10).each do |nb_id|
-  10.times do
+(1..25).each do |nb_id|
+  25.times do
     FactoryGirl.create(:note, notebook_id: nb_id)
   end
 end
@@ -20,3 +20,14 @@ begin
 end
 end
 
+tag_ids = u1.tags.pluck(:id).shuffle
+note_ids = u1.notes.pluck(:id).shuffle
+
+
+50.times do
+  FactoryGirl.create(
+    :tagging,
+    tag_id: tag_ids.sample,
+    note_id: note_ids.pop
+  )
+end
