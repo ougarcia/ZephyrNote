@@ -32,6 +32,8 @@ gem 'newrelic_rpm'
 gem 'backbone-on-rails'
 gem 'kaminari'
 gem 'tagmanager-rails'
+gem 'factory_girl_rails'
+gem 'faker'
 
 # gem 'rails_12factor'
 
@@ -50,6 +52,4 @@ group :development, :test do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'faker'
 end
