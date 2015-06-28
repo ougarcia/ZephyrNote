@@ -1,11 +1,13 @@
 u1 = User.create(username: 'guest', password: 'password')
 25.times do 
+  p "trying to make notebooks"
   FactoryGirl.create(:notebook, user: u1)
 end
 
 
 (1..25).each do |nb_id|
   25.times do
+    p "trying to make notes"
     FactoryGirl.create(:note, notebook_id: nb_id)
   end
 end
