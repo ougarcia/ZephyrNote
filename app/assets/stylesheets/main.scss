@@ -8,12 +8,17 @@
   float: left;
   border-right: 1px solid black;
 }
+
+#middle-content > .notes-index, #middle-content > .container-index {
+  height: 100vh;
+}
+
 #middle-content .notes, #middle-content .container-list {
+  height: 100vh;
   overflow-y: auto;
 }
 
 #right-content {
   width: 60%;
   float: left;
-  overflow-y: auto;
 }
