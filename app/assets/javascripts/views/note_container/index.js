@@ -30,7 +30,6 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
     $('.my-modal').modal();
   },
 
-
   reorder: function (event) {
     event.preventDefault();
     var $target = $(event.currentTarget);
@@ -42,7 +41,6 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
 
     this.render();
   },
-
 
   reorderCollection: function(order, dir) {
     switch (order) {
@@ -70,7 +68,6 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
     });
     this._subviews['.container-list'] = _([]);
   },
-
 
   addItemView: function (item) {
     var subview = new cleverNote.Views.notesContainerIndexItem({ model: item });

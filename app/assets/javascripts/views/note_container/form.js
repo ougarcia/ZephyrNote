@@ -3,7 +3,19 @@ cleverNote.Views.noteContainerForm = Backbone.View.extend({
   template: JST['note_container/form'],
 
   events: {
-    'click button.submit': 'handleSubmit'
+    'click button.submit': 'handleSubmit',
+    'click button.delete': 'handleDelete'
+  },
+
+
+  handleDelete: function(event) {
+    event.preventDefault();
+    var that = this;
+    $('.my-modal').modal('toggle');
+    $('.my-modal').one('hidden.bs.modal', function(e) {
+      that.model.destroy();
+      Backbone.history.navigate(that.model.routesName, { trigger: true});
+    });
   },
 
   handleSubmit: function(event) {
