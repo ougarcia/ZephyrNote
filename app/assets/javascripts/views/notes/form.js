@@ -3,7 +3,8 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
   template: JST['notes/form'],
 
   events: {
-    'click .submit': 'handleSubmit'
+    'click .submit': 'handleSubmit',
+    'click button.delete': 'handleDelete'
   },
 
   initialize: function (options) {
@@ -41,6 +42,11 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     this.addSubview('#note-body-form', this.noteBodySubview);
   },
 
+  addNoteDeleteSubview: function () {
+    this.noteDeleteSubview = new cleverNote.Views.NoteFormDelete({ model: this.model });
+    this.addSubview('.confirm-modal', this.noteDeletesubview);
+  },
+
   handleSubmit: function (event) {
     event.preventDefault();
     var that = this;
@@ -54,6 +60,20 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     });
   },
 
+  handleDelete: function(event) {
+    event.preventDefault();
+    var that = this;
+    var $confirm = $('.confirm-modal');
+    $confirm.modal();
+  },
+
+  setModal: function() {
+    var confirmSubview = new cleverNote.Views.NoteFormDelete({
+      model: this.model
+    });
+    this.$('.confirm-modal').html(confirmSubview.$el);
+    confirmSubview.render();
+  },
 
   render: function () {
     var content = this.template({ note: this.model });
@@ -61,6 +81,7 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     this.attachSubviews();
     this.noteBodySubview && this.noteBodySubview.onRender();
     this.tagsSubview && this.tagsSubview.onRender();
+    this.setModal();
     return this;
   }
 });
