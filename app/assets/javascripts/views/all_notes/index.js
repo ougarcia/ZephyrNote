@@ -1,5 +1,4 @@
 cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
-  // might be able to dry this up
   template: JST['notes/index'],
   className: 'notes-index',
 
@@ -24,14 +23,15 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
   },
 
   listenForScroll: function () {
-    $(window).off("scroll");
+    this.$('div.notes').off('scroll');
     var throttled = _.throttle(this.nextPage.bind(this), 200);
-    $(window).on("scroll", throttled);
+    this.$('div.notes').on("scroll", throttled);
   },
 
   nextPage: function () {
     var that = this;
-    if ($(window).scrollTop() > $(document).height() - $(window).height() -40) {
+    var notesDiv = this.$('div.notes');
+    if (notesDiv.scrollTop() >= notesDiv.prop('scrollHeight') - notesDiv.height() - 5) {
       if (that.collection.page < that.collection.totalPages) {
         that.collection.fetch({
           data: { page: that.collection.page + 1 },
