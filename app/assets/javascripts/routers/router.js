@@ -46,7 +46,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       success: function() {
         that.notebooks.add(notebook, { merge: true });
         if (!noNote) {
-          that.showNote(notebook.notes().first().id, true);
+          that.showNote(notebook.notes().last().id, true);
         }
       }
     });
