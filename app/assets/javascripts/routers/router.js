@@ -17,9 +17,12 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     this.setSidebar();
   },
 
-  startPage: function () {
+  startPage: function (stopRight) {
     var notes = new cleverNote.Collections.Notes();
-    var view = new cleverNote.Views.allNotesIndex({ collection: notes });
+    var view = new cleverNote.Views.allNotesIndex({
+      collection: notes,
+      stopRight: !!stopRight
+    });
     this._swapView(view);
     var rightView = new Backbone.View();
     this._setRightView(rightView);
@@ -66,7 +69,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       notebooks: this.notebooks,
       tags: this.tags
     });
-    this.startPage();
+    this.startPage(true);
     this._setRightView(view);
   },
 

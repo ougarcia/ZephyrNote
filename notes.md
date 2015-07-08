@@ -6,5 +6,5 @@ gotta add a prettier login/start page(1-2 hours )
 
 gotta add seed data(2-3 hours)
 
-there's a bug where if I delete a note the notebook autoloadds the wrong
-note. I think it's related to my ordering being all janky.
+the select-color in my note editor isn't working
+

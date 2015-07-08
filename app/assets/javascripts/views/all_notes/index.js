@@ -2,7 +2,9 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
   template: JST['notes/index'],
   className: 'notes-index',
 
-  initialize: function () {
+  initialize: function (options) {
+    this.setRight = !options.stopRight;
+    console.log(this.setRight);
     var that = this;
     this.collection.fetch({
       remove: false,
@@ -15,7 +17,7 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
   },
 
   setRightView: function() {
-    window.router.showNote(this.collection.first().id, true);
+      this.setRight && window.router.showNote(this.collection.first().id, true);
   },
 
   addItemView: function(note) {
