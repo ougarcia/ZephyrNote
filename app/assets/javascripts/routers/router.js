@@ -10,7 +10,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     'tags/:id': 'showTag'
   },
 
-  initialize: function (options) {
+  initialize: function(options) {
     this.notebooks = options.notebooks;
     this.tags = options.tags;
     this.$rootEl = options.$rootEl;
@@ -26,7 +26,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
 // Notebooks
-//===============================================================================  
+//===============================================================================
 
   notebooksIndex: function () {
     this.notebooks.fetch();
@@ -39,11 +39,16 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
 
-  showNotebook: function (id) {
+  showNotebook: function (id, noNote) {
     var notebook = this.notebooks.getOrFetch(id);
     var that = this;
     notebook.fetch({
-      success: that.notebooks.add.bind(notebook, { merge: true })
+      success: function() {
+        that.notebooks.add(notebook, { merge: true });
+        if (!noNote) {
+          that.showNote(notebook.notes().first().id, true);
+        }
+      }
     });
     var view = new cleverNote.Views.NotesIndex({ model: notebook });
     this._swapView(view);
@@ -65,14 +70,16 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     this._setRightView(view);
   },
 
-  showNote: function(id) {
+  showNote: function(id, noNotebook) {
     this.notebooks.fetch();
     this.tags.fetch();
     var note = new cleverNote.Models.Note({ id: id });
     var that = this;
     note.fetch({
       success: function () {
-        that.showNotebook(note.get('notebook_id'));
+        if (!noNotebook) {
+          that.showNotebook(note.get('notebook_id'), true);
+        }
       }
     });
     var view = new cleverNote.Views.NoteForm({
@@ -109,7 +116,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     var view = new cleverNote.Views.Sidebar();
     $('#sidebar').html(view.render().$el);
   },
-
 
   _swapView: function(view) {
     this._currentView && this._currentView.remove();
