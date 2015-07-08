@@ -24,7 +24,7 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
   addNotebooksSubview: function () {
     var subview = new cleverNote.Views.NoteFormNotebooks({
       collection: this.notebooks,
-      model: this.model 
+      model: this.model
     });
     this.addSubview('#notebooks-form', subview);
   },
@@ -49,12 +49,14 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
 
   handleSubmit: function (event) {
     event.preventDefault();
+    var notebook = this.notebooks.get(this.model.get('notebook_id'));
     var that = this;
     var attrs = this.$('form').serializeJSON();
     attrs['note']['body'] = this.noteBodySubview._editor.getHTML();
     this.model.set(attrs);
     this.model.save({}, {
       success: function () {
+        notebook.notes().add(that.model, { merge: true });
         Backbone.history.navigate('', { trigger: true });
       }
     });

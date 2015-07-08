@@ -39,9 +39,13 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
     var notesDiv = this.$('div.notes');
     if (notesDiv.scrollTop() >= notesDiv.prop('scrollHeight') - notesDiv.height() - 5) {
       if (that.collection.page < that.collection.totalPages) {
+        // add a loading image here
         that.collection.fetch({
           data: { page: that.collection.page + 1 },
-          remove: false
+          remove: false,
+          success: function () {
+            //remove the loading image here
+          }
         });
       }
     }
