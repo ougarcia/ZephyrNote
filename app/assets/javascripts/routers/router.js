@@ -26,7 +26,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
 // Notebooks
-//===============================================================================
+//==============================================================================
 
   notebooksIndex: function () {
     this.notebooks.fetch();
