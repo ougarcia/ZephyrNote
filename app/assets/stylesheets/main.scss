@@ -20,5 +20,7 @@
 
 #right-content {
   width: 60%;
+  height: 100vh;
+  overflow-y: auto;
   float: left;
 }

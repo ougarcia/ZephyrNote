@@ -4,7 +4,6 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.setRight = !options.stopRight;
-    console.log(this.setRight);
     var that = this;
     this.collection.fetch({
       remove: false,
