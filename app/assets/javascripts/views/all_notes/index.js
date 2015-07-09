@@ -8,7 +8,10 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
     this.collection.fetch({
       remove: false,
       data: { page: 1 },
-      success: that.setRightView.bind(that)
+      success: function() {
+        that.setRightView;
+        $('.notes').append(JST['notes/loading']);
+      }
     });
     this.listenTo(this.collection, 'add', this.addItemView);
     this.listenTo(this.collection, 'remove', this.removeItemView);
@@ -48,6 +51,8 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
             $('.notes').append(JST['notes/loading']);
           }
         });
+      } else {
+        $('#loading-gif').remove();
       }
     }
   },

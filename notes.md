@@ -8,3 +8,4 @@ gotta add seed data(2-3 hours)
 
 the select-color in my note editor isn't working
 
+change the order of sort title
