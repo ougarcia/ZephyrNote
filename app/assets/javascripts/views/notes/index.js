@@ -58,7 +58,7 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
         console.log("weird");
     }
     this.collection.sort();
-    if (dir !== "oldest") {
+    if (dir === "newest") {
       this.collection.models = this.collection.models.reverse();
     }
   },

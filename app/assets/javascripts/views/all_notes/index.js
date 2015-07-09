@@ -52,7 +52,7 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
           }
         });
       } else {
-        //$('#loading-gif').remove();
+        $('#loading-gif').remove();
       }
     }
   },

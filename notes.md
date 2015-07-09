@@ -5,7 +5,3 @@ gotta add some prettier html/css(2-3 hours)
 gotta add a prettier login/start page(1-2 hours )
 
 gotta add seed data(2-3 hours)
-
-the select-color in my note editor isn't working
-
-change the order of sort title
