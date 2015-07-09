@@ -56,7 +56,7 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     this.model.set(attrs);
     this.model.save({}, {
       success: function () {
-        notebook.notes().add(that.model, { merge: true });
+        !!notebook && notebook.notes().add(that.model, { merge: true });
         Backbone.history.navigate('', { trigger: true });
       }
     });
@@ -81,7 +81,6 @@ cleverNote.Views.NoteForm = Backbone.CompositeView.extend({
     var content = this.template({ note: this.model });
     this.$el.html(content);
     this.attachSubviews();
-    this.noteBodySubview && this.noteBodySubview.onRender();
     this.tagsSubview && this.tagsSubview.onRender();
     this.setModal();
     return this;
