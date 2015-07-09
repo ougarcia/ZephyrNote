@@ -9,7 +9,7 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
       remove: false,
       data: { page: 1 },
       success: function() {
-        that.setRightView;
+        that.setRightView();
         $('.notes').append(JST['notes/loading']);
       }
     });
@@ -52,7 +52,7 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
           }
         });
       } else {
-        $('#loading-gif').remove();
+        //$('#loading-gif').remove();
       }
     }
   },
