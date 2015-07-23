@@ -1,51 +1,5 @@
-<div class="container-header">
+<a href="#"><%= title %></a>
+<ul class="nav nav-second-level collapse container-list"> </ul>
 
-  <div class="new-item-link">
-    <% if (view.notebook) { %>
-        <a href='#/notebooks/new'>
-          <button class="btn btn-link new-item-button">
-            <span class="glyphicon glyphicon-book"></span>
-            <span class="glyphicon glyphicon-plus"></span>
-          </button>
-        </a>
-    <% } else { %>
-      <a href='#/tags/new'>
-        <button class="btn btn-link new-item-button">
-          <span class="glyphicon glyphicon-tag"></span>
-          <span class="glyphicon glyphicon-plus"></span>
-        </button>
-      </a>
-    <% } %>
-  </div>
-
-  <h1><%= (view.notebook) ? "Notebooks" : "Tags" %></h1>
-
-  <div class="sort-by-section dropdown">
-
-    <button
-      class="btn btn-link dropdown-toggle"
-      type="button"
-      id="doropdownMenu1"
-      data-toggle="dropdown"
-      aria-haspopup="true"
-      aria-expanded="true">
-      Sort by<span class="caret"></span>
-    </button>
-
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li><a href="#" class="sort-button">Title</a></li>
-      <li><a href="#" class="sort-button">Created - newest</a></li>
-      <li><a href="#" class="sort-button">Created - oldest</a></li>
-      <li><a href="#" class="sort-button">Updated - newest</a></li>
-      <li><a href="#" class="sort-button">Updated - oldest</a></li>
-    </ul>
-
-  </div>
-
-</div>
-
-<div class='container-list'>
-</div>
-
-<div class="my-modal modal fade">
-</div>
+<!--have to make this unique for both notebooks and tags-->
+<div class="my-modal modal fade"> </div>
