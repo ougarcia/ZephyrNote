@@ -41,9 +41,14 @@ cleverNote.Views.Sidebar = Backbone.View.extend({
     window.location.replace('session/new');
   },
 
+  onRender: function () {
+    $('#side-menu').metisMenu();
+  },
+
   render: function () {
     var content = this.template();
     this.$el.html(content);
+    this.onRender();
     return this;
   }
 });

@@ -17,6 +17,7 @@
 //= require backbone
 //= require jquery.serializejson
 //= require composite_view
+//= require metisMenu
 //= require quill
 //= require tagmanager
 //= require typeahead.bundle

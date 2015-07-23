@@ -117,7 +117,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 
   setSidebar: function () {
     var view = new cleverNote.Views.Sidebar();
-    $('#sidebar').html(view.render().$el);
+    $('#sidebar').html(view.$el);
+    view.render();
   },
 
   _swapView: function(view) {
