@@ -4,6 +4,9 @@ cleverNote.Views.Sidebar = Backbone.CompositeView.extend({
   attributes: {role: 'navigation', style: 'margin-bottom: 0'},
   template: JST['sidebar'],
 
+  events: {
+    'click a.logout': 'logOut'
+  },
 
   initialize: function (options) {
     this.notebooks = options.notebooks;
@@ -14,7 +17,8 @@ cleverNote.Views.Sidebar = Backbone.CompositeView.extend({
     //TODO: need to add a logout button
   },
 
-  logOut: function () {
+  logOut: function (e) {
+    e.preventDefault();
     $.ajax({
       url: "/session",
       method: "delete",
@@ -51,6 +55,11 @@ cleverNote.Views.Sidebar = Backbone.CompositeView.extend({
 
   onRender: function () {
     $('#side-menu').metisMenu();
+    var logoutEl = $('<li>', {
+      'class': 'container-list-item',
+      'html': '<a href="#" class="logout">Log Out</a>'
+    });
+    this.$('ul.nav').append(logoutEl);
   },
 
   render: function () {
