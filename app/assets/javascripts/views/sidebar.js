@@ -1,9 +1,7 @@
 cleverNote.Views.Sidebar = Backbone.CompositeView.extend({
-  // make sure that when I attach the subviews I append and not replace
-  // the html
-  // better yet, add the ul item for the subviews
-  // then use css or jquery to add a content before
-  className: 'text-center',
+  tagName: 'nav',
+  className: 'navbar navbar-default navbar-static-top',
+  attributes: {role: 'navigation', style: 'margin-bottom: 0'},
   template: JST['sidebar'],
 
 
@@ -13,6 +11,7 @@ cleverNote.Views.Sidebar = Backbone.CompositeView.extend({
     this.addNavLinks();
     this.addIndexView(this.notebooks);
     this.addIndexView(this.tags);
+    //TODO: need to add a logout button
   },
 
   logOut: function () {
