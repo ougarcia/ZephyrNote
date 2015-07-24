@@ -11,28 +11,26 @@ cleverNote.Views.noteContainerForm = Backbone.View.extend({
   handleDelete: function(event) {
     event.preventDefault();
     var that = this;
-    $('.my-modal').modal('toggle');
-    $('.my-modal').one('hidden.bs.modal', function(e) {
+    $('.nc-modal').modal('toggle');
+    $('.nc-modal').one('hidden.bs.modal', function(e) {
       that.model.destroy();
-      Backbone.history.navigate(that.model.routesName, { trigger: true});
+      Backbone.history.navigate('', { trigger: true});
     });
   },
 
   handleSubmit: function(event) {
     event.preventDefault();
-    $('.my-modal').modal('toggle');
+    $('.nc-modal').modal('toggle');
     var that = this;
     var attrs = this.$('form').serializeJSON();
     this.model.set(attrs);
     // gotta wait for the modal to go away before redirecting
-    $('.my-modal').one('hidden.bs.modal', function(e) {
-
+    $('.nc-modal').one('hidden.bs.modal', function(e) {
       that.model.save({}, {
         success: function () {
           Backbone.history.navigate(that.model.routesName + '/' + that.model.id, { trigger: true });
         }
       });
-      
     });
   },
 
