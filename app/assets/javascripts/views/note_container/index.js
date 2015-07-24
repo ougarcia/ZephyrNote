@@ -3,9 +3,8 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
   className: 'container-index',
   template: JST['note_container/index'],
 
-
   events: {
-    'click .new-item-button': 'modalForm'
+    'click a.activate-modal': 'modalForm'
   },
 
   initialize: function () {
@@ -14,6 +13,14 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'remove', this.removeItemView);
   },
 
+  addModalLi: function() {
+    var $modalLi = $('<li>', {
+      'class': 'container-list-item',
+      'html': '<a href="#" class="activate-modal"> New ' + this.collection.title + '</a>'
+    });
+    this.$('ul.nav-second-level').append($modalLi);
+    this.setModal();
+  },
 
   setModal: function () {
     var newItem = new this.collection.model();
@@ -21,19 +28,24 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
       model: newItem,
       collection: this.collection
     });
-    this.$('.my-modal').html(newView.$el);
+    this.$modalDiv = this.$('.' + this.collection.title.toLowerCase() + '-modal');
+    this.$modalDiv.html(newView.$el);
     newView.render();
   },
 
   modalForm: function (event) {
     event.preventDefault();
-    $('.my-modal').modal();
+    //kind of fixes it but kinda hacky
+    this.$modalDiv.modal({
+      backdrop: false
+    });
   },
-
 
   addItemView: function (item) {
     var subview = new cleverNote.Views.notesContainerIndexItem({ model: item });
-    this.addSubview('.container-list', subview);
+    // the modalLi will always get added before the subviews because the
+    // subviews get added async. right now i prepende subviews
+    this.addSubview('.container-list', subview, true);
   },
 
   removeItemView: function (item) {
@@ -44,7 +56,7 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
     var content = this.template({ title: this.collection.title });
     this.$el.html(content);
     this.attachSubviews();
-    this.setModal();
+    this.addModalLi();
     return this;
   }
 });
