@@ -5,13 +5,19 @@ cleverNote.Views.notesContainerIndexItem = Backbone.View.extend({
 
   initialize: function (options) {
     if (!!this.model) {
-      this.listenTo(this.model, 'sync', this.render);
+      this.listenTo(this.model, 'sync change:title', this.modelRender);
       this.title = this.model.get('title');
       this.destination = this.model.navigation();
     } else {
       this.title = options.title;
       this.destination = options.destination;
     }
+  },
+
+  modelRender: function(e) {
+    this.title = this.model.get('title');
+    this.destination = this.model.navigation();
+    this.render();
   },
 
   render: function () {
