@@ -1,3 +1,5 @@
+/* gotta find a better way to format this background, the padding's all
+ * weird */
 
 #big-container {
   background-color: #F8F8F8;
@@ -5,7 +7,10 @@
 
 .navbar .navbar-brand {
     /*background: url(../images/logo-small.png) no-repeat 15px 6px;*/
-    background-size: 31px 39px;
+    background: url(/assets/logo.png) no-repeat 15px 6px;
+    background-position-x: 8%;
+    background-position-y: 50%;
+    background-size: 31px;
     padding: 15px 15px 15px 50px;
 }
 
@@ -18,7 +23,10 @@ only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) { 
     .navbar .navbar-brand {
         /*background: url(../images/logo-small2x.png) no-repeat 15px 6px;*/
-        background-size: 31px 39px;
+        background: url(/assets/logo.png) no-repeat 15px 6px;
+        background-position-x: 8%;
+        background-position-y: 50%;
+        background-size: 31px;
     }
 }
 
@@ -30,7 +38,8 @@ only screen and (                min-resolution: 2dppx) {
     .navbar .navbar-brand {
         text-align: center;
         /*background: url(../images/logo.png) no-repeat center 10px;*/
-        background-size: 94px 119px;
+        background: url(/assets/logo.png) no-repeat center 10px;
+        background-size: 175px;
         line-height: 270px;
         margin: 0;
         padding: 15px 15px;
@@ -45,7 +54,8 @@ only screen and (                min-resolution: 2dppx) {
     only screen and (                min-resolution: 2dppx) { 
         .navbar .navbar-brand {
             /*background: url(../images/logo-2x.png) no-repeat center 10px;*/
-            background-size: 94px 119px;
+            background: url(/assets/logo.png) no-repeat center 10px;
+            background-size: 175px;
         }
     }
 
