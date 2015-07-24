@@ -5,78 +5,80 @@
   background-color: #F8F8F8;
 }
 
-.navbar .navbar-brand {
-    /*background: url(../images/logo-small.png) no-repeat 15px 6px;*/
-    background: url(/assets/logo.png) no-repeat 15px 6px;
-    background-position-x: 8%;
-    background-position-y: 50%;
-    background-size: 31px;
-    padding: 15px 15px 15px 50px;
-}
+#sidebar {
+  .navbar .navbar-brand {
+      /*background: url(../images/logo-small.png) no-repeat 15px 6px;*/
+      background: url(/assets/logo.png) no-repeat 15px 6px;
+      background-position-x: 8%;
+      background-position-y: 50%;
+      background-size: 31px;
+      padding: 15px 15px 15px 50px;
+  }
 
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   min--moz-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1),
-only screen and (        min-device-pixel-ratio: 2),
-only screen and (                min-resolution: 192dpi),
-only screen and (                min-resolution: 2dppx) { 
-    .navbar .navbar-brand {
-        /*background: url(../images/logo-small2x.png) no-repeat 15px 6px;*/
-        background: url(/assets/logo.png) no-repeat 15px 6px;
-        background-position-x: 8%;
-        background-position-y: 50%;
-        background-size: 31px;
-    }
-}
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) { 
+      .navbar .navbar-brand {
+          /*background: url(../images/logo-small2x.png) no-repeat 15px 6px;*/
+          background: url(/assets/logo.png) no-repeat 15px 6px;
+          background-position-x: 8%;
+          background-position-y: 50%;
+          background-size: 31px;
+      }
+  }
 
-@media (min-width: 768px) {
-    .navbar {
-        position: absolute;
-    }
+  @media (min-width: 768px) {
+      .navbar {
+          position: absolute;
+      }
 
-    .navbar .navbar-brand {
-        text-align: center;
-        /*background: url(../images/logo.png) no-repeat center 10px;*/
-        background: url(/assets/logo.png) no-repeat center 10px;
-        background-size: 175px;
-        line-height: 270px;
-        margin: 0;
-        padding: 15px 15px;
-    }
+      .navbar .navbar-brand {
+          text-align: center;
+          /*background: url(../images/logo.png) no-repeat center 10px;*/
+          background: url(/assets/logo.png) no-repeat center 10px;
+          background-size: 175px;
+          line-height: 270px;
+          margin: 0;
+          padding: 15px 15px;
+      }
 
-    @media
-    only screen and (-webkit-min-device-pixel-ratio: 2),
-    only screen and (   min--moz-device-pixel-ratio: 2),
-    only screen and (     -o-min-device-pixel-ratio: 2/1),
-    only screen and (        min-device-pixel-ratio: 2),
-    only screen and (                min-resolution: 192dpi),
-    only screen and (                min-resolution: 2dppx) { 
-        .navbar .navbar-brand {
-            /*background: url(../images/logo-2x.png) no-repeat center 10px;*/
-            background: url(/assets/logo.png) no-repeat center 10px;
-            background-size: 175px;
-        }
-    }
+      @media
+      only screen and (-webkit-min-device-pixel-ratio: 2),
+      only screen and (   min--moz-device-pixel-ratio: 2),
+      only screen and (     -o-min-device-pixel-ratio: 2/1),
+      only screen and (        min-device-pixel-ratio: 2),
+      only screen and (                min-resolution: 192dpi),
+      only screen and (                min-resolution: 2dppx) { 
+          .navbar .navbar-brand {
+              /*background: url(../images/logo-2x.png) no-repeat center 10px;*/
+              background: url(/assets/logo.png) no-repeat center 10px;
+              background-size: 175px;
+          }
+      }
 
-    .navbar .navbar-header:hover {
-        color: #333;
-        background-color: #eee;
-    }
+      .navbar .navbar-header:hover {
+          color: #333;
+          background-color: #eee;
+      }
 
-    .navbar, .navbar .navbar-brand {
-        width: 250px;
-        height: 185px;
-    }
+      .navbar, .navbar .navbar-brand {
+          width: 250px;
+          height: 185px;
+      }
 
-    .sidebar {
-        z-index: 1;
-        position: absolute;
-        width: 250px;
-        margin-top: 185px;
-    }
-}
+      .sidebar {
+          z-index: 1;
+          position: absolute;
+          width: 250px;
+          margin-top: 185px;
+      }
+  }
 
-.sidebar-nav .active{
-    background-color: #eee;
+  .sidebar-nav .active{
+      background-color: #eee;
+  }
 }
