@@ -7,7 +7,6 @@
 
 #sidebar {
   .navbar .navbar-brand {
-      /*background: url(../images/logo-small.png) no-repeat 15px 6px;*/
       background: url(/assets/logo.png) no-repeat 15px 6px;
       background-position-x: 8%;
       background-position-y: 50%;
@@ -23,7 +22,6 @@
   only screen and (                min-resolution: 192dpi),
   only screen and (                min-resolution: 2dppx) { 
       .navbar .navbar-brand {
-          /*background: url(../images/logo-small2x.png) no-repeat 15px 6px;*/
           background: url(/assets/logo.png) no-repeat 15px 6px;
           background-position-x: 8%;
           background-position-y: 50%;
@@ -38,7 +36,6 @@
 
       .navbar .navbar-brand {
           text-align: center;
-          /*background: url(../images/logo.png) no-repeat center 10px;*/
           background: url(/assets/logo.png) no-repeat center 10px;
           background-size: 175px;
           line-height: 270px;
@@ -54,7 +51,6 @@
       only screen and (                min-resolution: 192dpi),
       only screen and (                min-resolution: 2dppx) { 
           .navbar .navbar-brand {
-              /*background: url(../images/logo-2x.png) no-repeat center 10px;*/
               background: url(/assets/logo.png) no-repeat center 10px;
               background-size: 175px;
           }
@@ -80,5 +76,9 @@
 
   .sidebar-nav .active{
       background-color: #eee;
+  }
+
+  .sidebar .nav-second-level li a {
+    padding-left: 37px;
   }
 }

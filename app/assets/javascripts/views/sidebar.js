@@ -14,7 +14,6 @@ cleverNote.Views.Sidebar = Backbone.CompositeView.extend({
     this.addNavLinks();
     this.addIndexView(this.notebooks);
     this.addIndexView(this.tags);
-    //TODO: need to add a logout button
   },
 
   logOut: function (e) {
@@ -50,7 +49,7 @@ cleverNote.Views.Sidebar = Backbone.CompositeView.extend({
 
 
   removeItemView: function(item) {
-    this.rmeoveModelSubview('ul.meismenu', item);
+    this.removeModelSubview('ul.meismenu', item);
   },
 
   onRender: function () {
@@ -59,7 +58,7 @@ cleverNote.Views.Sidebar = Backbone.CompositeView.extend({
       'class': 'container-list-item',
       'html': '<a href="#" class="logout">Log Out</a>'
     });
-    this.$('ul.nav').append(logoutEl);
+    this.$('ul#side-menu').append(logoutEl);
   },
 
   render: function () {

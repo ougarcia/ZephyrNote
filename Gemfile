@@ -35,6 +35,7 @@ gem 'tagmanager-rails'
 gem 'factory_girl_rails'
 gem 'faker'
 gem 'rspec-rails'
+gem 'font-awesome-rails'
 
 # gem 'rails_12factor'
 
