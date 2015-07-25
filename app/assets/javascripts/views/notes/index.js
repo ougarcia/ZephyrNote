@@ -20,6 +20,7 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
   setModal: function () {
     var newView = new cleverNote.Views.noteContainerForm({
       model: this.model,
+      parent: $('.nc-modal')
     });
     this.$('.nc-modal').html(newView.$el);
     newView.render();

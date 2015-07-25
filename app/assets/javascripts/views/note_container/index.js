@@ -19,26 +19,25 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
       'html': '<a href="#" class="activate-modal"> New ' + this.collection.title + '</a>'
     });
     this.$('ul.nav-second-level').append($modalLi);
-    this.setModal();
   },
 
   setModal: function () {
+    var modalDiv = '#' + this.collection.title.toLowerCase() + '-modal';
+    this.$modalDiv = $(modalDiv);
     var newItem = new this.collection.model();
     var newView = new cleverNote.Views.noteContainerForm({
       model: newItem,
-      collection: this.collection
+      collection: this.collection,
+      parent: this.$modalDiv
     });
-    this.$modalDiv = this.$('.' + this.collection.title.toLowerCase() + '-modal');
     this.$modalDiv.html(newView.$el);
     newView.render();
   },
 
   modalForm: function (event) {
     event.preventDefault();
-    //kind of fixes it but kinda hacky
-    this.$modalDiv.modal({
-      backdrop: false
-    });
+    var $modalDiv = $('#' + this.collection.title.toLowerCase() + '-modal');
+    $modalDiv.modal();
   },
 
   addItemView: function (item) {
@@ -57,6 +56,7 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.attachSubviews();
     this.addModalLi();
+    this.setModal();
     return this;
   }
 });

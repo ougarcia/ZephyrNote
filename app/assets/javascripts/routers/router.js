@@ -43,6 +43,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 
 
   showNotebook: function (id, noNote) {
+    //TODO: what if it's empty?????!!!
     var notebook = this.notebooks.getOrFetch(id);
     var that = this;
     notebook.fetch({
