@@ -14,9 +14,11 @@ cleverNote.Views.noteContainerIndex = Backbone.CompositeView.extend({
   },
 
   addModalLi: function() {
+    var title = this.collection.title;
+    title = title.slice(0, title.length -1);
     var $modalLi = $('<li>', {
       'class': 'container-list-item',
-      'html': '<a href="#" class="activate-modal"> New ' + this.collection.title + '</a>'
+      'html': '<a href="#" class="activate-modal"><p class="pull-right"><i class="fa fa-plus-square"></i> New ' + title + '</p></a>'
     });
     this.$('ul.nav-second-level').append($modalLi);
   },
