@@ -4,7 +4,7 @@ class Note < ActiveRecord::Base
   validates :title, :notebook, presence: true
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings, source: :tag
-  # paginates_par 10
+  paginates_per 8
 
   def tags_string=(str)
     tag_titles = str.split(",")

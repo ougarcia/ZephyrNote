@@ -36,7 +36,8 @@
 
 
 .note-list-item {
-  min-height: 40px;
+  height: 150px;
+  overflow-y: hidden;
   border-top: 1px solid #ECECEC;
 }
 

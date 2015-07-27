@@ -1,21 +1,21 @@
 <a href= '#/notes/<%= this.model.id%>'>
-    <span><%= note.get('title') %></span>
-    <br>
+  <h4><%= note.get('title') %></h4>
+  <div class="second-row clearfix">
+    <% if (!!tags) { %>
+      <small class="pull-left">
+        <% tags.each( function(tag) { %>
+          <span><%= tag.get('title') %></span>
+        <% }) %>
+      </small>
+    <% } %>
 
-    <div class="second-row clearfix">
-      <% if (!!tags) { %>
-        <small class="pull-left">
-          <% tags.each( function(tag) { %>
-            <span><%= tag.get('title') %></span>
-          <% }) %>
-        </small>
-      <% } %>
-
-      <div class="timestamp">
-        <small><abbr class="timeago pull-right" title="<%= note.get('updated_at') %>">
-            <%= note.get('updated_at') %>
-        </abbr></small>
-      </div>
+    <div class="timestamp">
+      <small><abbr class="timeago pull-right" title="<%= note.get('updated_at') %>">
+          <%= note.get('updated_at') %>
+      </abbr></small>
     </div>
+  </div>
+
+  <div class="third-row clearfix"><%= bodyString %></div>
 </a>
 
