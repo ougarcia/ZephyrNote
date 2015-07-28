@@ -4,9 +4,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     '': 'startPage',
     'notes/new': 'newNote',
     'notes/:id': 'showNote',
-    'notebooks': 'notebooksIndex',
     'notebooks/:id': 'showNotebook',
-    'tags': 'tagsIndex',
     'tags/:id': 'showTag'
   },
 
@@ -31,14 +29,16 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 // Notebooks
 //==============================================================================
 
-  showNotebook: function (id, noNote) {
+  showNotebook: function (id, options) {
+    options = options || { setNote: true };
+    var setNote = options.setNote;
     var notebook = this.notebooks.getOrFetch(id);
     var that = this;
     notebook.fetch({
       success: function() {
         that.notebooks.add(notebook, { merge: true });
-        if (!noNote && notebook.notes().length > 0) {
-          that.showNote(notebook.notes().last().id, true);
+        if (setNote && notebook.notes().length > 0) {
+          that.showNote(notebook.notes().last().id, { setNb: false });
         }
       }
     });
@@ -62,16 +62,16 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     this._setRightView(view);
   },
 
-  showNote: function(id, noNotebook) {
+  showNote: function(id, options) {
+    options = options || { setNb: true };
+    var setNb = options.setNb;
     this.notebooks.fetch();
     this.tags.fetch();
     var note = new cleverNote.Models.Note({ id: id });
     var that = this;
     note.fetch({
       success: function () {
-        if (!noNotebook) {
-          that.showNotebook(note.get('notebook_id'), true);
-        }
+        setNb && that.showNotebook(note.get('notebook_id'), { setNote: false });
       }
     });
     var view = new cleverNote.Views.NoteForm({
@@ -111,7 +111,8 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
   _focusRight: function () {
-  }
+  },
+  
 
   _swapView: function(view) {
     this._currentView && this._currentView.remove();
