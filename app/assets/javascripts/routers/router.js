@@ -31,17 +31,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 // Notebooks
 //==============================================================================
 
-  notebooksIndex: function () {
-    this.notebooks.fetch();
-    var view = new cleverNote.Views.NotebooksIndex({
-      collection: this.notebooks
-    });
-    this._swapView(view);
-    var rightView = new Backbone.View();
-    this._setRightView(rightView);
-  },
-
-
   showNotebook: function (id, noNote) {
     var notebook = this.notebooks.getOrFetch(id);
     var that = this;
@@ -96,14 +85,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 // Tags
 //==============================================================================
 
-  tagsIndex: function () {
-    this.tags.fetch();
-    var view = new cleverNote.Views.TagsIndex({ collection: this.tags });
-    this._swapView(view);
-    var rightView = new Backbone.View();
-    this._setRightView(rightView);
-  },
-
   showTag: function (id) {
     var tag = this.tags.getOrFetch(id);
     var that = this;
@@ -125,6 +106,12 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     $('#sidebar').html(view.$el);
     view.render();
   },
+
+  _focusMiddle: function () {
+  },
+
+  _focusRight: function () {
+  }
 
   _swapView: function(view) {
     this._currentView && this._currentView.remove();
