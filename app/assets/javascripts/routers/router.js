@@ -16,6 +16,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
   startPage: function (stopRight) {
+    this._focusMiddle();
     var notes = new cleverNote.Collections.Notes();
     var view = new cleverNote.Views.allNotesIndex({
       collection: notes,
@@ -32,6 +33,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   showNotebook: function (id, options) {
     options = options || { setNote: true };
     var setNote = options.setNote;
+    setNote && this._focusMiddle();
     var notebook = this.notebooks.getOrFetch(id);
     var that = this;
     notebook.fetch({
@@ -65,6 +67,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   showNote: function(id, options) {
     options = options || { setNb: true };
     var setNb = options.setNb;
+    setNb && this._focusRight();
     this.notebooks.fetch();
     this.tags.fetch();
     var note = new cleverNote.Models.Note({ id: id });
@@ -108,9 +111,13 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
   _focusMiddle: function () {
+    $('#middle-content').removeClass('hidden-xs');
+    $('#right-content').addClass('hidden-xs');
   },
 
   _focusRight: function () {
+    $('#right-content').removeClass('hidden-xs');
+    $('#middle-content').addClass('hidden-xs');
   },
   
 
