@@ -38,7 +38,11 @@ body {
       border-left: 1px solid #e7e7e7;
   }
 
-  #middle-content, #right-content {
-    width: 50%;
+  #middle-content {
+    width: 30%;
+  }
+
+  #right-content {
+    width: 70%;
   }
 }
