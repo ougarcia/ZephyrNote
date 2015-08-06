@@ -1,4 +1,27 @@
-<div class="container">
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="fa fa-bars"></span>
+  </button>
+
+  <a class="navbar-brand" href="/#">ZephyrNote</a>
+</div>
+
+<!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="navbar-default" role="navigation">
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div>  
+  </div>
+</nav>
+
+<div class="container-fluid">
   <%= render 'shared/form', form_action: session_url, submit_text: "Log In", user: @user %>
   <div class="form-signin">
     <a href="<%= new_user_url %>" class="switch-button">
@@ -6,3 +29,4 @@
     </a>
   </div>
 </div>
+
