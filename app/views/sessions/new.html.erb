@@ -1,4 +1,5 @@
 <div id="landing-wrapper">
+  <!-- navbar -->
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -14,18 +15,34 @@
       <div class="navbar-default" role="navigation">
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="#Login">Login</a></li>
+            <!-- going to use this part t0 navigate to different sections -->
             <!--
-            <li><a href="#about">Link</a></li>
             <li><a href="#technologies">Link</a></li>
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
             -->
           </ul>
-        </div>  
+        </div>
       </div>
     </div>
   </nav>
 
+  <header>
+    <div class="header-content">
+      <h1>A web application for creating, editing, and organizing notes.</h1>
+      <hr>
+      <p>Built using Ruby on Rails, PostgreSQL, and Backbone.js</p>
+    </div>
+  </header>
+
+  <section id="intro-block">
+    <div class="container-fluid">
+
+    </div>
+  </section>
+
+  <!-- login block -->
   <section id="login-block">
     <div class="container-fluid">
       <div class="row">
@@ -40,10 +57,3 @@
   </section>
 
 </div>
-
-<script>
-$('a[href*=#]').on('click', function(event){     
-    event.preventDefault();
-    $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
-});
-</script>
