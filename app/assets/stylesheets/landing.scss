@@ -3,10 +3,10 @@
   padding-top: 50px;
   width: 100%;
   height: 100%;
+  color: white;
 
   .form-signin {
     max-width: 330px;
-    padding: 15px;
     margin: 0 auto;
   }
 
@@ -30,12 +30,15 @@
     background: url(/assets/landing-background.jpg) center;
     padding: 100px 15px;
     background-size: cover;
-    color: white;
 
     h1 {
       font-size: 53px;
       font-weight: 700;
       text-transform: uppercase;
     }
+  }
+
+  .bg-dark-blue {
+    background-color: #34495e;
   }
 }
