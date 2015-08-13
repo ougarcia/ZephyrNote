@@ -42,12 +42,30 @@
     </div>
   </section>
 
+  <!-- logos block -->
+  <% logos = { js: "JavaScript", backbone: "Backbone.js", ruby: "Ruby",
+               rails: "Rails", bootstrap: "Bootstrap", postgres: "PostgreSQL" }%>
+  <section id="logos-block" class="text-center">
+    <h1>Made using:</h1>
+    <br>
+    <div class="container-fluid">
+      <div class="row">
+        <% logos.each do |k, v| %>
+          <div class="col-lg-4 col-md-6 text-center">
+            <img src="/assets/logos/<%= k %>.svg">
+            <h2><%= v %></h2>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
   <!-- login block -->
   <section id="login-block" class="bg-dark-blue">
     <div class="container-fluid">
       <div class="row">
         <%= render 'shared/form', form_action: session_url, submit_text: "Log In", user: @user %>
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-sm-4 col-sm-offset-4">
           <h1 class="text-center">OR</h1>
           <a href="<%= new_user_url %>" class="switch-button">
             <button class="btn btn-lg btn-primary btn-block btn-info">Sign Up</button>
