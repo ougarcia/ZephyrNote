@@ -40,7 +40,7 @@
     background-size: cover;
 
     h1 {
-      font-size: 53px;
+      font-size: calc(100% + 4vw);
       font-weight: 700;
       text-transform: uppercase;
     }
