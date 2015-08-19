@@ -61,6 +61,7 @@ cleverNote.Routers.Router = Backbone.Router.extend({
       tags: this.tags
     });
     this.startPage(true);
+    this._focusRight();
     this._setRightView(view);
   },
 
