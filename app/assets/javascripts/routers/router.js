@@ -120,7 +120,6 @@ cleverNote.Routers.Router = Backbone.Router.extend({
     $('#right-content').removeClass('hidden-xs');
     $('#middle-content').addClass('hidden-xs');
   },
-  
 
   _swapView: function(view) {
     this._currentView && this._currentView.remove();
