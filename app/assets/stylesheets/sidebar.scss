@@ -1,5 +1,3 @@
-/* gotta find a better way to format this background, the padding's all
- * weird */
 
 #big-container {
   background-color: #F8F8F8;
@@ -20,7 +18,7 @@
   only screen and (     -o-min-device-pixel-ratio: 2/1),
   only screen and (        min-device-pixel-ratio: 2),
   only screen and (                min-resolution: 192dpi),
-  only screen and (                min-resolution: 2dppx) { 
+  only screen and (                min-resolution: 2dppx) {
       .navbar .navbar-brand {
           background: url(/assets/logo.png) no-repeat 15px 6px;
           background-position-x: 8%;
@@ -30,6 +28,10 @@
   }
 
   @media (min-width: 768px) {
+      width: 250px;
+      height: 100vh;
+      float: left;
+      background-color: #f8f8f8;
       .navbar {
           position: absolute;
       }
@@ -49,7 +51,7 @@
       only screen and (     -o-min-device-pixel-ratio: 2/1),
       only screen and (        min-device-pixel-ratio: 2),
       only screen and (                min-resolution: 192dpi),
-      only screen and (                min-resolution: 2dppx) { 
+      only screen and (                min-resolution: 2dppx) {
           .navbar .navbar-brand {
               background: url(/assets/logo.png) no-repeat center 10px;
               background-size: 175px;
@@ -71,8 +73,10 @@
           position: absolute;
           width: 250px;
           margin-top: 185px;
+          max-height: calc(100vh - 185px);
+          overflow-y: auto;
       }
-  }
+  }/* end of @media (min-width: 780px) */
 
   .sidebar-nav .active > a{
       background-color: #eee;
