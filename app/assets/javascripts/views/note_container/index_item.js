@@ -3,6 +3,10 @@ cleverNote.Views.notesContainerIndexItem = Backbone.View.extend({
   className: 'container-list-item',
   template: JST['note_container/index_item'],
 
+  events: {
+    'click a': 'handleNavigation'
+  },
+
   initialize: function (options) {
     if (!!this.model) {
       this.listenTo(this.model, 'sync change:title', this.modelRender);
@@ -12,6 +16,10 @@ cleverNote.Views.notesContainerIndexItem = Backbone.View.extend({
       this.title = options.title;
       this.destination = options.destination;
     }
+  },
+
+  handleNavigation: function(event) {
+    if ($(window).width() < 768) $('.navbar-toggle').click();
   },
 
   modelRender: function(e) {
