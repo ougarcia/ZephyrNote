@@ -3,12 +3,6 @@
     display: inline;
   }
 
-  .tt-menu {
-  }
-
-  .tt-dataset {
-  }
-
   .tt-suggestion {
     padding-left: 10px;
   }
@@ -31,5 +25,10 @@
     -webkit-box-shadow: inset 0 0 0 #000;
     font-size: 20px;
     color: #2DBE60;
+  }
+
+  span.input-group-addon:first-child {
+    margin-right: -1px;
+    width: auto;
   }
 }
