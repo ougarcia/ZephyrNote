@@ -27,8 +27,8 @@
     color: #2DBE60;
   }
 
-  span.input-group-addon:first-child {
-    margin-right: -1px;
-    width: auto;
+  #notebooks-form .input-group-addon,
+  #notebooks-form .input-group-btn {
+    width: initial;
   }
 }
