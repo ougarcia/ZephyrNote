@@ -21,6 +21,7 @@
 //= require quill
 //= require tagmanager
 //= require typeahead.bundle
+//= require bootstrap-select.min
 //= require jquery.timeago
 //= require cleverNote
 //= require_tree ../templates

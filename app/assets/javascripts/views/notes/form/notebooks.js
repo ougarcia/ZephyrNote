@@ -7,6 +7,12 @@ cleverNote.Views.NoteFormNotebooks = Backbone.View.extend({
     this.listenTo(this.model, 'sync', this.render);
   },
 
+  onRender: function () {
+    // style the select input, necessary because select tags are 
+    // buggy in chrome
+    $('.selectpicker').selectpicker();
+  },
+
   render: function () {
     var nbid;
     if (!!this.model.get('notebook_id')) {
@@ -20,6 +26,7 @@ cleverNote.Views.NoteFormNotebooks = Backbone.View.extend({
       nbid: nbid
     });
     this.$el.html(content);
+    this.onRender();
     return this;
   }
 });
