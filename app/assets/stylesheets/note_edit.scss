@@ -27,6 +27,8 @@
     color: #2DBE60;
   }
 
+  /* there's something weird going on with input groups and their display: */
+  /* table styling. For now, this seems to fix it, no idea why.*/
   #notebooks-form .input-group-addon,
   #notebooks-form .input-group-btn {
     width: initial;

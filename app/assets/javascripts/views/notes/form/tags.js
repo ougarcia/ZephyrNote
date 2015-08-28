@@ -59,7 +59,7 @@ cleverNote.Views.NoteFormTags = Backbone.View.extend({
       this.tagApi.tagsManager("pushTag", d.name);
     });
     // the listener starting onl ine 58 might not be necessary
- 
+
     $('.tm-input').on('tm:refresh', function(e, tag) {
       $('.tm-input').typeahead('close');
     });
