@@ -20,6 +20,7 @@
 //= require metisMenu
 //= require quill
 //= require tagmanager
+//= require bootstrap-tagsinput
 //= require typeahead.bundle
 //= require bootstrap-select.min
 //= require jquery.timeago

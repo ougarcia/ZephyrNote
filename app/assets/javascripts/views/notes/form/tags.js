@@ -8,44 +8,48 @@ cleverNote.Views.NoteFormTags = Backbone.View.extend({
   },
 
   onRender: function () {
-    var x= $('.tm-input');
-    var prefilledTitles = [];
-    this.model.tags().each( function(tag) {
-      prefilledTitles.push(tag.get('title'));
+    var $input = this.$('input#bst');
+
+    // turn on tagsinput plugin
+    $input.tagsinput({
+      confirmKeys: [9, 13, 44, 32],
     });
-    this.tagApi = this.$('.tm-input').tagsManager({
-      prefilled: prefilledTitles,
-      delimiters: [9, 13, 44, 32],
-      deleteTagsOnBackspace: false,
-      hiddenTagListName: 'note[tags_string]',
-      tagsContainer: '#tags-target',
+
+    // preload the pre-existigns tags
+    this.model.tags().each(function(tag) {
+      $input.tagsinput('add', tag.get('title'));
     });
-   this.setTypeahead();
+
+    this.setTypeAhead($input);
   },
 
-  setTypeahead: function () {
-    var tags = [];
-    this.collection.each( function(tag) {
-      tags.push(tag.get('title'));
-    });
+  substringMatcher: function(strs) {
+    return function findMatches(q, cb) {
+      var matches, substrRegex;
 
-    var substringMatcher = function(strs) {
-      return function findMatches(q, cb) {
-        var matches, substrRegex;
+      matches = [];
+      substrRegex = new RegExp(q, 'i');
+      $.each(strs, function(i, str) {
+        if(substrRegex.test(str)) {
+          matches.push(str);
+        }
+      });
 
-        matches = [];
-        substrRegex = new RegExp(q, 'i');
-        $.each(strs, function(i, str) {
-          if(substrRegex.test(str)) {
-            matches.push(str);
-          }
-        });
-
-        cb(matches);
-      };
+      cb(matches);
     };
+  },
 
-    $('.tm-input').typeahead({
+  setTypeAhead: function ($input) {
+    // return if $typeAhead hadn't been rendered on DOM yet
+    var $typeAhead = $input.tagsinput('input');
+    if (typeof $typeAhead === 'undefined') return null;
+
+    //get all tag titles for use with typeahead
+    var tags = this.collection.map(function(tag) {
+      return tag.get('title');
+    });
+    // turn on typeahead
+    $typeAhead.typeahead({
       hint: true,
       highlight: true,
       minLength: 1,
@@ -54,26 +58,18 @@ cleverNote.Views.NoteFormTags = Backbone.View.extend({
       }
     }, {
       name: 'tags',
-      source: substringMatcher(tags)
-    }).on('typeahead:selected', function (e, d) {
-      this.tagApi.tagsManager("pushTag", d.name);
+      source: this.substringMatcher(tags)
     });
-    // the listener starting onl ine 58 might not be necessary
 
-    $('.tm-input').on('tm:refresh', function(e, tag) {
-      $('.tm-input').typeahead('close');
+    // clear typeahead when an input gets turned into a tag
+    $('input#bst').on('itemAdded', function(e, tag) {
+      $typeAhead.typeahead('close');
     });
 
   },
 
   render: function () {
-    var tagIds = this.model.tags().map( function(tag) {
-      return tag.id;
-    });
-    var content = this.template({
-      tags: this.collection,
-      tagIds: tagIds
-    });
+    var content = this.template();
     this.$el.html(content);
     this.onRender();
     return this;

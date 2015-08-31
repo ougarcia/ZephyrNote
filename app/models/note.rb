@@ -10,9 +10,8 @@ class Note < ActiveRecord::Base
     tag_titles = str.split(",")
     tags = tag_titles.map do |tag_title|
       Tag.find_or_create_by(title: tag_title, user: self.user)
-      # gotta give the new tag the current user
     end
-    
+
     self.tags = tags
   end
 
