@@ -1,5 +1,5 @@
 cleverNote.Views.NoteFormNotebooks = Backbone.View.extend({
-  className: 'form-group navbar-left input-group',
+  className: 'input-group',
   template: JST['notes/form/notebooks'],
 
   initialize: function () {

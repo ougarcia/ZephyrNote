@@ -11,14 +11,6 @@
     min-width: 10em;
   }
 
-  .navbar-form > * {
-    margin: 0 5px 0 5px;
-  }
-
-  .navbar {
-    margin-bottom: 0;
-  }
-
   .form-title-wrapper {
     margin-top: 20px;
   }
@@ -34,6 +26,17 @@
   div.bootstrap-tagsinput {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+
+  @media (min-width: 940px) {
+    #nav-buttons {
+      float: right !important;
+    }
+  }
+
+  #notebooks-form {
+    display: inline-block;
+    vertical-align: middle;
   }
 
   /* there's something weird going on with input groups and their display: */
