@@ -1,5 +1,5 @@
 cleverNote.Views.NoteFormTags = Backbone.View.extend({
-  className: 'form-group navbar-left',
+  className: 'form-group navbar-left input-group',
   template: JST['notes/form/tags'],
 
   initialize: function (options) {
