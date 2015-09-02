@@ -33,6 +33,13 @@
       <h1>A web application for creating, editing, and organizing notes.</h1>
       <hr>
       <p>Built using Ruby on Rails, PostgreSQL, and Backbone.js</p>
+    <form action=<%= session_url %> method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="user[username]" value="guest">
+      <input type="hidden" name="user[password]" value="password">
+      <button class="btn btn-default btn-lg" type="submit">Demo the App!</button>
+
+  </form>
     </div>
   </header>
 
