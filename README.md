@@ -2,7 +2,7 @@
 
 [Live Link][heroku]
 
-[heroku]: zephyrnote.xyz
+[heroku]: http://zephyrnote.xyz
 
 ## Minimum Viable Product
 ZephyrNote is responsive single-page web application inspired by EverNote. It's
