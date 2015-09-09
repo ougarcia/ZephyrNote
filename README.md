@@ -1,14 +1,14 @@
-# cleverNote
+# Zephyrnote
 
-[Heroku link][heroku]
+[Live Link][heroku]
 
-[heroku]: https://clevernote-oscar.herokuapp.com/
+[heroku]: zephyrnote.xyz
 
 ## Minimum Viable Product
-cleverNote is a clone of evernote built on Rails and Backbone. Users can:
+ZephyrNote is responsive single-page web application inspired by EverNote. It's
+built using Ruby on Rails and Backbone.
 
-<!-- This is a Markdown checklist. Use it to keep track of your progress! -->
-
+Users can:
 - [x] Create/Edit Notes
 - [x] View Notes
 - [x] Organize Notes within Notebooks
@@ -56,15 +56,15 @@ collection to help me keep track of all the notes that belong to a tag.
 [Details][phase-four]
 
 ### Bonus Features (TBD)
-- [ ] Pretty html/css
+- [x] Pretty html/css
 - [x] Prettier Tag Selection (max-favilli/tagmanager + twitter/typeahead.js)
 - [x] Fancier text editing capabilities (Quill JS)
+- [x] Sort notes by title, date created, date updated
 - [ ] Search
-- [ ] fancier landing page(fullpage.js or bootstrap)
+- [ ] fancier landing page
 - [ ] Pretty transitions between pages (Animate css)
 - [ ] Shortcuts
 - [ ] Snippet view in NotesIndex
-- [ ] Sort notes by title, date created, date updated
 
 
 
