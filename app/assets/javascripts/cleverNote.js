@@ -18,5 +18,7 @@ window.cleverNote = {
 };
 
 $(document).ready(function(){
-  cleverNote.initialize();
+  if (document.querySelector('body').className === "static_pages root") {
+    cleverNote.initialize();
+  }
 });
