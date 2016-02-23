@@ -1,11 +1,6 @@
 require 'faker'
 
 FactoryGirl.define do
-  factory :user do
-    username { Faker::Internet.user_name }
-    password 'password'
-  end
-
   factory :notebook do 
     title { Faker::Hacker.noun }
     created_at { 10.days.ago }
