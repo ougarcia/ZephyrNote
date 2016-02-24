@@ -7,8 +7,4 @@ FactoryGirl.define do
     updated_at { 5.days.ago }
     user
   end
-
-  factory :tagging do
-  end
-
 end
