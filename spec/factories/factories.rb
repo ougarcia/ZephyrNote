@@ -7,10 +7,6 @@ FactoryGirl.define do
     updated_at { 5.days.ago }
   end
 
-  factory :tag do
-    title { Faker::Hacker.adjective }
-  end
-
   factory :note do
     title { Faker::Lorem.sentence }
     body { Faker::Hacker.say_something_smart }

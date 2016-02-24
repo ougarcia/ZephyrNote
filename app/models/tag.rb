@@ -5,5 +5,8 @@ class Tag < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :notes, through: :taggings, source: :note
 
-  validates :title, :user, presence: true, uniqueness: true
+  # Would prefer to scope to user but:
+  # https://github.com/thoughtbot/shoulda-matchers/issues/814
+  validates :title,  presence: true, uniqueness: { scope: :user_id }
+  validates :user, presence: true
 end
