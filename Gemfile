@@ -36,6 +36,7 @@ gem 'tagmanager-rails'
 gem 'factory_girl_rails'
 gem 'faker'
 gem 'rspec-rails'
+gem 'shoulda-matchers'
 gem 'font-awesome-rails'
 
 # gem 'rails_12factor'
@@ -46,9 +47,11 @@ gem 'font-awesome-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :development do
+  gem 'web-console', '~> 2.0'
+end
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
