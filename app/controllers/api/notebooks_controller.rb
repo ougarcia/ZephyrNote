@@ -47,9 +47,10 @@ module Api
     end
 
     def find_and_validate_notebook
-      @notebook = Notebook.find(params[:id])
-      unless @notebook.user == current_user
-        render json: ['Notebook does not belong to current user'], status: 403
+      #@notebook = Notebook.find(params[:id])
+      @notebook = current_user.notebooks.find_by(id: params[:id])
+      unless @notebook && @notebook.user == current_user
+        render json: ['Notebook not found'], status: 404
       end
     end
   end
