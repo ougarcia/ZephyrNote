@@ -1,13 +1,15 @@
+# Controller for tags
 module Api
   class TagsController < ApiController
-
-    def index 
+    def index
       @tags = current_user.tags
+
       render json: @tags
     end
 
     def show
-      @tag = Tag.find(params[:id])
+      @tag = current_user.tags.find_by(id: params[:id])
+
       if @tag
         render :show
       else
@@ -16,8 +18,8 @@ module Api
     end
 
     def create
-      @tag = Tag.new(tag_params)
-      @tag.user = current_user
+      @tag = current_user.tags.new(tag_params)
+
       if @tag.save
         render json: @tag
       else
@@ -26,25 +28,32 @@ module Api
     end
 
     def update
-      @tag = Tag.find(params[:id])
+      @tag = current_user.tags.find_by(id: params[:id])
+
       if @tag && @tag.update(tag_params)
         render json: @tag
+      elsif @tag
+        render json: @tag.errors.full_messages, status: :unproccessable_entity
       else
-        render json: @tag.errurs.full_messages, status: :unproccessable_entity
+        render json: ['Tag Not Found'], status: 404
       end
     end
 
     def destroy
-      @tag = Tag.find(params[:id])
-      @tag.destroy
-      render json: {}
+      @tag = current_user.tags.find_by(id: params[:id])
+
+      if @tag
+        @tag.destroy
+        render json: {}
+      else
+        render json: ['Tag Not Found'], status: 404
+      end
     end
+
+    private
 
     def tag_params
       params.require(:tag).permit(:title)
     end
-
-
-
   end
 end
