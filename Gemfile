@@ -50,6 +50,14 @@ gem 'font-awesome-rails'
 group :development do
   gem 'web-console', '~> 2.0'
 end
+
+group :test do
+  gem 'capybara'
+  gem 'launchy'
+  gem 'poltergeist'
+  gem 'database_cleaner'
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'spring'
