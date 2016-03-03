@@ -4,7 +4,7 @@ cleverNote.Views.NotesIndex = Backbone.CompositeView.extend({
 
   events: {
     'click .sort-button': 'reorder',
-    'click .edit-notebook-link': 'showModal'
+    'click .edit-link': 'showModal'
   },
 
   initialize: function () {

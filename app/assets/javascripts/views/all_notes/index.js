@@ -19,7 +19,9 @@ cleverNote.Views.allNotesIndex = Backbone.CompositeView.extend({
   },
 
   setRightView: function() {
-      this.setRight && window.router.showNote(this.collection.first().id, true);
+    if (typeof this.collection.first() === 'undefined') return;
+
+    this.setRight && window.router.showNote(this.collection.first().id, true);
   },
 
   addItemView: function(note) {
