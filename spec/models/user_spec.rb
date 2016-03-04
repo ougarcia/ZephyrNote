@@ -16,10 +16,31 @@ RSpec.describe User, type: :model do
 
     let!(:user) { User.create(username: 'username', password: 'password') }
 
-    subject { User.find_by_credentials(username: 'username', password: 'password') }
 
-    it 'finds a user by username and password' do
-      is_expected.to eq(user)
+    context 'with correct username and password' do
+      subject do
+        User.find_by_credentials(username: 'username', password: 'password')
+      end
+
+      it 'returns the user' do
+        is_expected.to eq(user)
+      end
+    end
+
+    context 'when password is wrong' do
+      subject do
+        User.find_by_credentials(username: 'username', password: 'passw0rd')
+      end
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'when username is wrong' do
+      subject do
+        User.find_by_credentials(username: 'username1', password: 'password')
+      end
+
+      it { is_expected.to be_nil }
     end
   end
 
