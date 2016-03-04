@@ -1,8 +1,11 @@
-# Zephyrnote
+# [ZephyrNote] [live]
 
-[Live Link][heroku]
+[![Code Climate](https://codeclimate.com/github/ougarcia/ZephyrNote/badges/gpa.svg)][codeclimate]
 
-[heroku]: http://zephyrnote.xyz
+[Live Link][live]
+
+[codeclimate]: https://codeclimate.com/github/ougarcia/ZephyrNote
+[live]: http://zephyrnote.xyz
 
 ## Minimum Viable Product
 ZephyrNote is responsive single-page web application inspired by EverNote. It's
