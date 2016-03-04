@@ -1,5 +1,4 @@
 cleverNote.Routers.Router = Backbone.Router.extend({
-
   routes: {
     '': 'startPage',
     'notes/new': 'newNote',
@@ -16,35 +15,30 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
   startPage: function (stopRight) {
-    this._focusMiddle();
     var notes = new cleverNote.Collections.Notes();
+
     var view = new cleverNote.Views.allNotesIndex({
       collection: notes,
       stopRight: !!stopRight
     });
+
+    this._focusMiddle();
     this._swapView(view);
-    var rightView = new Backbone.View();
-    this._setRightView(rightView);
+    this._setRightView(new Backbone.View());
   },
 
 // Notebooks
 //==============================================================================
 
-  showNotebook: function (id, options) {
-    options = options || { setNote: true };
-    var setNote = options.setNote;
-    setNote && this._focusMiddle();
+  showNotebook: function (id) {
     var notebook = this.notebooks.getOrFetch(id);
-    var that = this;
-    notebook.fetch({
-      success: function() {
-        that.notebooks.add(notebook, { merge: true });
-        if (setNote && notebook.notes().length > 0) {
-          that.showNote(notebook.notes().last().id, { setNb: false });
-        }
-      }
-    });
     var view = new cleverNote.Views.NotesIndex({ model: notebook });
+
+    notebook.fetch({
+      success: this._onNotebookFetchSuccess.bind(this, notebook)
+    });
+
+    this._focusMiddle();
     this._swapView(view);
   },
 
@@ -52,37 +46,26 @@ cleverNote.Routers.Router = Backbone.Router.extend({
 //==============================================================================
 
   newNote: function () {
+    var note = new cleverNote.Models.Note({ title: 'Untitled' });
+    var view = new cleverNote.Views.NoteForm(this._noteViewParams(note));
+
     this.notebooks.fetch();
     this.tags.fetch();
-    var note = new cleverNote.Models.Note({ title: 'Untitled' });
-    var view = new cleverNote.Views.NoteForm({
-      model: note,
-      notebooks: this.notebooks,
-      tags: this.tags
-    });
+
     this.startPage(true);
     this._focusRight();
     this._setRightView(view);
   },
 
-  showNote: function(id, options) {
-    options = options || { setNb: true };
-    var setNb = options.setNb;
-    setNb && this._focusRight();
+  showNote: function(id) {
+    var note = new cleverNote.Models.Note({ id: id });
+    var view = new cleverNote.Views.NoteForm(this._noteViewParams(note));
+
     this.notebooks.fetch();
     this.tags.fetch();
-    var note = new cleverNote.Models.Note({ id: id });
-    var that = this;
-    note.fetch({
-      success: function () {
-        setNb && that.showNotebook(note.get('notebook_id'), { setNote: false });
-      }
-    });
-    var view = new cleverNote.Views.NoteForm({
-      model: note,
-      notebooks: this.notebooks,
-      tags: this.tags
-    });
+    note.fetch();
+
+    this._focusRight();
     this._setRightView(view);
   },
 
@@ -92,21 +75,25 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   showTag: function (id) {
     var tag = this.tags.getOrFetch(id);
     var that = this;
-    tag.fetch({ success: that.tags.add.bind(tag, { merge: true }) });
     var view = new cleverNote.Views.NotesIndex({ model: tag });
+
+    tag.fetch({ success: this.tags.add.bind(tag, { merge: true }) });
+
     this._swapView(view);
   },
 
-// Bonus
+// Helpers
 //==============================================================================
 
   setSidebar: function () {
     this.notebooks.fetch();
     this.tags.fetch();
+
     var view = new cleverNote.Views.Sidebar({
       notebooks: this.notebooks,
       tags: this.tags
     });
+
     $('#sidebar').html(view.$el);
     view.render();
   },
@@ -122,19 +109,33 @@ cleverNote.Routers.Router = Backbone.Router.extend({
   },
 
   _swapView: function(view) {
-    this._currentView && this._currentView.remove();
-    this._currentView = view;
-    $('#middle-content').html(view.$el);
-    view.render();
-    view.onRender && view.onRender();
+    this._replaceView(this._currentView, $('#middle-content'), view);
   },
 
   _setRightView: function(view) {
-    this._rightView && this._rightView.remove();
-    this._rightView = view;
-    $('#right-content').html(view.$el);
-    view.render();
-    view.onRender && view.onRender();
-  }
+    this._replaceView(this._rightView, $('#right-content'), view);
+  },
 
+  _replaceView: function(property, $attachPoint, view) {
+    if (property) property.remove();
+
+    property = view;
+    $attachPoint.html(view.$el);
+    view.render();
+
+    if (view.onRender) view.onRender();
+  },
+
+  _noteViewParams: function(note) {
+    return {
+      model: note,
+      notebooks: this.notebooks,
+      tags: this.tags
+    };
+  },
+
+  _onNotebookFetchSuccess: function (notebook) {
+    this.notebooks.add(notebook, { merge: true });
+    if (notebook.notes().length > 0) this.showNote(notebook.notes().last().id);
+  }
 });
