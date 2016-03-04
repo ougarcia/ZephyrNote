@@ -9,15 +9,13 @@ class Note < ActiveRecord::Base
 
   paginates_per 8
 
-  validates :title, :notebook, presence: true
+  validates :notebook, presence: true
+  validates :title, presence: true
 
-  def tags_string=(str)
-    tag_titles = str.split(',')
-
-    tags = tag_titles.map do |tag_title|
-      Tag.find_or_create_by(title: tag_title, user: user)
+  # Takes comma-seperated list of titles for tags the associated with the note.
+  def tags_string=(titles)
+    self.tags = titles.split(',').map do |title|
+      Tag.find_or_create_by(title: title, user: user)
     end
-
-    self.tags = tags
   end
 end
