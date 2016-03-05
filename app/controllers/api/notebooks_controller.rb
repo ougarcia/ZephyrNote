@@ -1,38 +1,28 @@
 module Api
   class NotebooksController < ApiController
-    # probably add a before action to validate that notebook belongs to
-    # user
     before_action :find_and_validate_notebook, only: [:show, :update, :destroy]
 
     def index
       @notebooks = current_user.notebooks
+
       render json: @notebooks
     end
 
-    def show
-      if @notebook
-        render :show
-      else
-        render json: ['Notebook Not Found'], status: 404
-      end
-    end
-
-
     def create
-      @notebook = Notebook.new(notebook_params)
-      @notebook.user = current_user
+      @notebook = current_user.notebooks.new(notebook_params)
+
       if @notebook.save
         render json: @notebook
       else
-        render json: @notebook.errors.full_messages, status: :unproccessable_entity
+        render json: @notebook.errors.full_messages, status: 422
       end
     end
 
     def update
-      if @notebook && @notebook.update(notebook_params)
+      if @notebook.update(notebook_params)
         render json: @notebook
       else
-        render json: @notebook.errors.full_messages, status: :unproccessable_entity
+        render json: @notebook.errors.full_messages, status: 422
       end
     end
 
@@ -42,16 +32,15 @@ module Api
     end
 
     private
+
     def notebook_params
       params.require(:notebook).permit(:title)
     end
 
     def find_and_validate_notebook
-      #@notebook = Notebook.find(params[:id])
       @notebook = current_user.notebooks.find_by(id: params[:id])
-      unless @notebook && @notebook.user == current_user
-        render json: ['Notebook not found'], status: 404
-      end
+
+      render json: ['Notebook not found'], status: 404 unless @notebook
     end
   end
 end
