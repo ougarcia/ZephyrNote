@@ -3,6 +3,9 @@ cache: bundler
 rvm: '2.2.4'
 services: postgresql
 
+notifications:
+    email: false
+
 before_script:
   # Update phantomjs. Built-in version doesnt support Function.prototype,bind
   - mkdir travis-phantomjs
