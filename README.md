@@ -1,10 +1,13 @@
 # [ZephyrNote] [live]
 
 [![Code Climate](https://codeclimate.com/github/ougarcia/ZephyrNote/badges/gpa.svg)][codeclimate]
+[![Build Status](https://travis-ci.org/ougarcia/ZephyrNote.svg?branch=master)][travis]
+
 
 [Live Link][live]
 
 [codeclimate]: https://codeclimate.com/github/ougarcia/ZephyrNote
+[travis]: https://travis-ci.org/ougarcia/ZephyrNote
 [live]: http://zephyrnote.xyz
 
 ## Minimum Viable Product
