@@ -35,7 +35,7 @@ RSpec.describe Api::NotebooksController, type: :controller do
     before { get :index, format: :json }
 
     it "responds with the current user's notebooks" do
-      expect(response.body).to eq(notebooks.to_json)
+      expect(response.body).to eq(notebooks.sort_by(&:id).to_json)
     end
   end
 
@@ -48,7 +48,7 @@ RSpec.describe Api::NotebooksController, type: :controller do
       before { get :show, id: notebook.id, format: :json }
 
       it 'finds the correct notebook' do
-        expect(assigns(:notebook)).to eq(notebook)
+        expect(assigns(:record)).to eq(notebook)
       end
 
       it 'renders template :show' do
@@ -61,11 +61,15 @@ RSpec.describe Api::NotebooksController, type: :controller do
     before { post :create, notebook: { title: 'test-title' } }
 
     it 'creates a notebook' do
-      expect(assigns(:notebook)).to be_persisted
+      expect(assigns(:record)).to be_persisted
+    end
+
+    it do
+      expect(assigns(:record)).to be_a(Notebook)
     end
 
     it 'responds with notebook' do
-      expect(response.body).to eq(assigns(:notebook).to_json)
+      expect(response.body).to eq(assigns(:record).to_json)
     end
   end
 

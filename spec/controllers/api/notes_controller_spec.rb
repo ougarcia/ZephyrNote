@@ -74,7 +74,7 @@ RSpec.describe Api::NotesController, type: :controller do
     context 'when note params are invalid' do
       before { post :create, format: :json, note: { title: 'title' } }
 
-      it { is_expected.to respond_with(500) }
+      it { is_expected.to respond_with(422) }
     end
   end
 
@@ -86,7 +86,7 @@ RSpec.describe Api::NotesController, type: :controller do
 
       before { patch :update, id: note.id, note: { notebook_id: 9 } }
 
-      it { is_expected.to respond_with(500) }
+      it { is_expected.to respond_with(422) }
     end
 
     context 'when params are valid' do

@@ -50,11 +50,11 @@ RSpec.describe Api::TagsController, type: :controller do
     before { post :create, format: :json, tag: { title: 'new tag title' } }
 
     it 'sets the correct attributes' do
-      expect(assigns(:tag).title).to eq('new tag title')
+      expect(assigns(:record).title).to eq('new tag title')
     end
 
     it 'creates the tag' do
-      expect(assigns(:tag)).to be_persisted
+      expect(assigns(:record)).to be_persisted
     end
   end
 

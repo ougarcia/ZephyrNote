@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_credentials(user_params)
+
     if @user
       login!(@user)
       redirect_to root_url
@@ -17,6 +18,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout!
-    redirect_to new_session_url
+    redirect_to new_session_url, status: 303
   end
 end

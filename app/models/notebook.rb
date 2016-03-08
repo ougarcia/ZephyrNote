@@ -4,5 +4,6 @@ class Notebook < ActiveRecord::Base
 
   has_many :notes, dependent: :destroy
 
-  validates :title, :user, presence: true
+  validates :title, presence: true
+  validates :user, presence: true
 end

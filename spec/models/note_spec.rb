@@ -29,7 +29,7 @@ RSpec.describe Note, type: :model do
 
       before { note.tags_string = tags_string }
 
-      it 'creates the tag anda relation' do
+      it 'creates the tag and a relation' do
         expect(note.tags.map(&:title)).to eq(%w(tag1 tag2))
       end
     end

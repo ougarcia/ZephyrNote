@@ -1,6 +1,6 @@
-json.(@notebook, :id, :title, :created_at, :updated_at)
+json.(@record, :id, :title, :created_at, :updated_at)
 json.notes do
-  json.array! @notebook.notes do |note|
+  json.array! @record.notes do |note|
     json.(note, *Note.column_names)
     json.tags do
       json.array! note.tags do |tag|
