@@ -11,24 +11,15 @@ module Api
     def create
       @note = Note.new(note_params)
 
-      if @note.save
-        render json: @note
-      else
-        render json: @note.errors.full_messages, status: :unproccessable_entity
-      end
+      create_model(@note)
     end
 
     def update
-      if @note.update(note_params)
-        render json: @note
-      else
-        render json: @note.errors.full_messages, status: :unproccessable_entity
-      end
+      update_model(@note, note_params)
     end
 
     def destroy
-      @note.destroy
-      render json: {}
+      destroy_model(@note)
     end
 
     private

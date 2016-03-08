@@ -15,24 +15,15 @@ module NoteContainer
   def create
     @record = current_user.send(record_name_plural).new(record_params)
 
-    if @record.save
-      render json: @record
-    else
-      render json: @record.errors.full_messages, status: 422
-    end
+    create_model(@record)
   end
 
   def update
-    if @record.update(record_params)
-      render json: @record
-    else
-      render json: @record.errors.full_messages, status: 422
-    end
+    update_model(@record, record_params)
   end
 
   def destroy
-    @record.destroy
-    render json: {}
+    destroy_model(@record)
   end
 
   private
