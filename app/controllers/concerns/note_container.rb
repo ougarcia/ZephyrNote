@@ -7,7 +7,7 @@ module NoteContainer
   end
 
   def index
-    @records = current_user.send(record_name_plural)
+    @records = current_user.send(record_name_plural).order(:id)
 
     render json: @records
   end

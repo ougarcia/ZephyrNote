@@ -35,7 +35,7 @@ RSpec.describe Api::NotebooksController, type: :controller do
     before { get :index, format: :json }
 
     it "responds with the current user's notebooks" do
-      expect(response.body).to eq(notebooks.to_json)
+      expect(response.body).to eq(notebooks.sort_by(&:id).to_json)
     end
   end
 
