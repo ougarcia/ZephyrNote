@@ -40,6 +40,7 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'jasmine'
   gem 'spring'
   gem 'factory_girl_rails'
   gem 'faker'
