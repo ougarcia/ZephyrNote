@@ -6,8 +6,15 @@ RSpec.feature "Notebooks", type: :feature, js: true do
   end
 
   let!(:notebook) { FactoryGirl.create(:notebook, user: user) }
+  let!(:note) { FactoryGirl.create(:note, title: 'note-title', notebook: notebook) }
 
   before { sign_in('username', 'password') }
+
+  it "contains it's notes" do
+    click_link_in_notebook_list(notebook.title)
+
+    expect(middle).to have_content('note-title')
+  end
 
   scenario 'creating a new notebook' do
     click_link_in_notebook_list('New Notebook')
