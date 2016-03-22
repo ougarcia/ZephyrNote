@@ -3,6 +3,7 @@ window.cleverNote = {
   Collections: {},
   Views: {},
   Routers: {},
+  Mixins: {},
 
   initialize: function() {
     var notebooks = new cleverNote.Collections.Notebooks();

@@ -15,19 +15,11 @@ cleverNote.Collections.Notes = Backbone.Collection.extend({
     }
 
     return response;
-  },
-
-  getOrFetch: function(id, cb) {
-    var note = this.get(id) || new cleverNote.Models.Note({ id: id });
-    note.fetch({ success: this._onFetchSuccess.bind(this, cb, note) });
-
-    return note;
-  },
-
-  _onFetchSuccess: function(cb, note) {
-    if (cb) cb(note);
-
-    this.add(note, { merge: true });
   }
 });
+
+_.extend(
+  cleverNote.Collections.Notes.prototype,
+  cleverNote.Mixins.getOrFetchable
+);
 
