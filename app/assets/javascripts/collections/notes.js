@@ -3,41 +3,31 @@ cleverNote.Collections.Notes = Backbone.Collection.extend({
   url: '/api/notes',
 
   initialize: function(options){
-    if (options && options.notebook) {
-      this.notebook = options.notebook;
-    }
+    if (options && options.notebook) this.notebook = options.notebook;
   },
 
+  // Need to figure out why I'm returning response.models in one case
   parse: function(response) {
-    if (response.page) {
-      this.page = parseInt(response.page);
-      this.totalPages = parseInt(response.total_pages);
+    if (typeof response.page !== 'undefined') {
+      this.page = parseInt(response.page, 10);
+      this.totalPages = parseInt(response.total_pages, 10);
       return response.models;
-    } else {
-      return response;
     }
-  },
 
+    return response;
+  },
 
   getOrFetch: function(id, cb) {
-    var that = this;
-    var note;
-    if ( !(note = this.get(id)) ) {
-      note = new cleverNote.Models.Note({ id: id });
-      note.fetch({
-        success: function () {
-          that.add(note);
-          if (cb) {
-            cb(note);
-          }
-        }
-      });
-    } else {
-      note.fetch({
-        success: cb
-      });
-    }
+    var note = this.get(id) || new cleverNote.Models.Note({ id: id });
+    note.fetch({ success: this._onFetchSuccess.bind(this, cb, note) });
 
     return note;
+  },
+
+  _onFetchSuccess: function(cb, note) {
+    if (cb) cb(note);
+
+    this.add(note, { merge: true });
   }
 });
+
