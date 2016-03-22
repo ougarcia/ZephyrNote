@@ -255,6 +255,7 @@ DEPENDENCIES
   launchy
   newrelic_rpm
   pg
+  phantomjs
   poltergeist
   pry-rails
   quiet_assets
