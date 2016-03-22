@@ -35,6 +35,7 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'database_cleaner'
 end
 
